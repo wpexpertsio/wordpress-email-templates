@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 $wrapper = "
-	background-color: #e3e3e3;
+	background-color:".$settings['body_bg'].";
 	width:100%;
 	-webkit-text-size-adjust:none !important;
 	margin:0;
@@ -23,12 +23,11 @@ $template_container = "
 	-webkit-border-radius:6px !important;
 	border-radius:6px !important;
 	background-color: #fafafa;
-	border: 1px solid #dadada;
 	-webkit-border-radius:6px !important;
 	border-radius:6px !important;
 ";
 $template_header = "
-	background-color: #454545;
+	background-color: ".$settings['header_bg'].";
 	color: #f1f1f1;
 	-webkit-border-top-left-radius:6px !important;
 	-webkit-border-top-right-radius:6px !important;
@@ -53,14 +52,14 @@ $body_content_inner = "
 	text-align:left;
 ";
 $header_content_h1 = "
-	color: #f1f1f1;
+	color: ".$settings['header_text_color'].";
 	margin:0;
 	padding: 28px 24px;
 	display:block;
 	font-family:Arial;
 	font-size:30px;
 	font-weight:bold;
-	text-align:left;
+	text-align:".$settings['header_aligment'].";
 	line-height: 150%;
 ";
 
@@ -73,19 +72,25 @@ $header_content_h1 = "
         <title><?php echo get_bloginfo('name'); ?></title>
 	</head>
     <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
-    	<div style="<?php echo $wrapper; ?>">
+    	<div id="body" style="<?php echo $wrapper; ?>">
         	<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
             	<tr>
                 	<td align="center" valign="top">
-                    	<table border="0" cellpadding="0" cellspacing="0" width="600" id="template_container" style="<?php echo $template_container; ?>">
+                    	<table border="0" cellpadding="0" cellspacing="0" width="80%" id="template_container" style="<?php echo $template_container; ?>">
                         	<tr>
                             	<td align="center" valign="top">
                                     <!-- Header -->
-                                	<table border="0" cellpadding="0" cellspacing="0" width="600" id="template_header" style="<?php echo $template_header; ?>"">
+                                	<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_header" style="<?php echo $template_header; ?>"">
                                         <tr>
                                             <td>
-                                            	<h1 style="<?php echo $header_content_h1; ?>"><?php echo $email_subject; ?></h1>
-
+                                            	<h1 style="<?php echo $header_content_h1; ?>" id="logo"><?php
+		                                            if( !empty($settings['header_logo']) ) {
+			                                            echo '<img src="'.apply_filters( 'mailtpl/templates/header_logo', $settings['header_logo'] ).'" alt="logo"/>';
+		                                            } elseif ( !empty( $settings['header_logo_text'] ) ) {
+														echo $settings['header_logo_text'];
+		                                            } else {
+														echo get_bloginfo('name');
+		                                            }  ?></h1>
                                             </td>
                                         </tr>
                                     </table>
@@ -95,7 +100,7 @@ $header_content_h1 = "
                         	<tr>
                             	<td align="center" valign="top">
                                     <!-- Body -->
-                                	<table border="0" cellpadding="0" cellspacing="0" width="600" id="template_body">
+                                	<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_body">
                                     	<tr>
                                             <td valign="top" style="<?php echo $body_content; ?>">
                                                 <!-- Content -->

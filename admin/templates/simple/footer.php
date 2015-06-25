@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 $template_footer = "
 	border-top:1px solid #E2E2E2;
-	background: #EEE;
+	background: ".$settings['footer_bg'].";
 	-webkit-border-radius:0px 0px 6px 6px;
 	-o-border-radius:0px 0px 6px 6px;
 	-moz-border-radius:0px 0px 6px 6px;
@@ -20,11 +20,11 @@ $template_footer = "
 
 $credit = "
 	border:0;
-	color: #777;
+	color: ".$settings['footer_text_color'].";
 	font-family: Arial;
 	font-size:12px;
 	line-height:125%;
-	text-align:center;
+	text-align:".$settings['footer_aligment'].";
 ";
 ?>
 
@@ -43,14 +43,14 @@ $credit = "
 	<tr>
     	<td align="center" valign="top">
             <!-- Footer -->
-        	<table border="0" cellpadding="10" cellspacing="0" width="600" id="template_footer" style="<?php echo $template_footer; ?>">
+        	<table border="0" cellpadding="10" cellspacing="0" width="100%" id="template_footer" style="<?php echo $template_footer; ?>">
             	<tr>
                 	<td valign="top">
                         <table border="0" cellpadding="10" cellspacing="0" width="100%">
                             <tr>
                                 <td colspan="2" valign="middle" id="credit" style="<?php echo $credit; ?>">
                                 
-                                	<?php echo apply_filters( 'wsi_email_footer_text', $email_footer ); ?>
+                                	<?php echo apply_filters( 'mailtpl/templates/footer_text', $settings['footer_text'] ); ?>
                                 </td>
                             </tr>
                         </table>
@@ -64,6 +64,6 @@ $credit = "
         </td>
     </tr>
 </table>
-        </div> <?php wp_footer();?>
+        </div> <?php if( is_customize_preview() ) wp_footer();?>
     </body>
 </html>

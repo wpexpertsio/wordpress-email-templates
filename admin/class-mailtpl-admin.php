@@ -73,74 +73,6 @@ class Mailtpl_Admin {
 
 	}
 
-	public function register_customize_sections( $wp_customize ){
-
-		$wp_customize->add_panel( 'mailtpl', array(
-			'title' => __( 'Email Templates', $this->plugin_name ),
-		) );
-		// Template
-		$wp_customize->add_section( 'section_mailtpl_template', array(
-			'title' => __( 'Template', $this->plugin_name ),
-			'panel' => 'mailtpl',
-		) );
-		$wp_customize->add_setting( 'mailtpl_opts[template]', array(
-			'type' => 'option',
-			'default' => 'simple',
-			'transport' => 'postMessage',
-			'capability' => 'edit_theme_options',
-			'sanitize_callback' => '',
-			'sanitize_js_callback' => '',
-		) );
-		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
-			'mailtpl_template', array(
-				'label' => __( 'Choose one', $this->plugin_name ),
-				'type' => 'select',
-				'section' => 'section_mailtpl_template',
-				'settings' => 'mailtpl_opts[template]',
-				'choices'  => array('simple' => 'Simple Theme')
-			)
-		) );
-
-		// Footer
-		$wp_customize->add_section( 'section_mailtpl_footer', array(
-			'title' => __( 'Footer', $this->plugin_name ),
-			'panel' => 'mailtpl',
-		) );
-		$wp_customize->add_setting( 'mailtpl_opts[footer]', array(
-			'type' => 'option',
-			'default' => 'Footer',
-			'transport' => 'postMessage',
-			'capability' => 'edit_theme_options',
-			'sanitize_callback' => '',
-			'sanitize_js_callback' => '',
-		) );
-		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
-			'mailtpl_footer', array(
-				'label' => __( 'Choose one', $this->plugin_name ),
-				'type' => 'test',
-				'section' => 'section_mailtpl_footer',
-				'settings' => 'mailtpl_opts[footer]',
-			)
-		) );
-	}
-
-	public function remove_other_sections( $active, $section ) {
-		if ( isset( $_GET['mailtpl_display'] ) ) {
-			if ( in_array( $section->id, array( 'section_mailtpl_footer', 'section_mailtpl_template' ) ) ) {
-				return true;
-			}
-			return false;
-		}
-		return true;
-	}
-
-	public function capture_customizer_page( $template ){
-
-		if( is_customize_preview() && isset( $_GET['mailtpl_display'] ) && 'true' == $_GET['mailtpl_display'] ){
-			return dirname(__FILE__) . "/templates/simple.php";
-		}
-		return $template;
-	}
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
@@ -164,20 +96,7 @@ class Mailtpl_Admin {
 
 	}
 
-	/**
-	 * Register the JavaScript for the admin area.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_scripts() {
 
-		wp_enqueue_script( 'mailtpl-js', plugin_dir_url( __FILE__ ) . 'js/mailtpl-admin.js', '', $this->version, false );
-		wp_localize_script( 'mailtpl-js', 'mailtpl',
-			array(
-				'focus' => 'mailtpl_template', // id de un control
-			)
-		);
-	}
 	/**
 	 * If we are in our template strip everything out and leave it clean
 	 * @since 1.0.0
@@ -221,9 +140,6 @@ class Mailtpl_Admin {
 				continue;
 			unset( $wp_filter['wp_footer'][$priority] );
 		}
-	}
-	public function enqueue_template_scripts(){
-		wp_enqueue_script( 'mailtpl-front-js', plugin_dir_url( __FILE__ ) . 'js/mailtpl-public.js', array(  'jquery', 'customize-preview' ), $this->version, true );
 	}
 
 }

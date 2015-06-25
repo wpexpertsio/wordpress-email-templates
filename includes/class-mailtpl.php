@@ -29,6 +29,11 @@
  */
 class Mailtpl {
 
+
+	public $customizer;
+	public $admin;
+	public $mailer;
+
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
@@ -58,6 +63,58 @@ class Mailtpl {
 	protected $version;
 
 	/**
+	 * Plugin Instance
+	 * @since 1.0.0
+	 * @var The Mailtpl plugin instance
+	 */
+	protected static $_instance = null;
+
+	/**
+	 * Main Mailtpl Instance
+	 *
+	 * Ensures only one instance of Mailtpl is loaded or can be loaded.
+	 *
+	 * @since 1.0.0
+	 * @static
+	 * @see Mailtpl()
+	 * @return Mailtpl - Main instance
+	 */
+	public static function instance() {
+		if ( is_null( self::$_instance ) ) {
+			self::$_instance = new self();
+		}
+		return self::$_instance;
+	}
+
+	/**
+	 * Cloning is forbidden.
+	 * @since 1.0.0
+	 */
+	public function __clone() {
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'wsi' ), '2.1' );
+	}
+
+	/**
+	 * Unserializing instances of this class is forbidden.
+	 * @since 1.0.0
+	 */
+	public function __wakeup() {
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'wsi' ), '2.1' );
+	}
+
+	/**
+	 * Auto-load in-accessible properties on demand.
+	 * @param mixed $key
+	 * @since 1.0.0
+	 * @return mixed
+	 */
+	public function __get( $key ) {
+		if ( in_array( $key, array( 'payment_gateways', 'shipping', 'mailer', 'checkout' ) ) ) {
+			return $this->$key();
+		}
+	}
+
+	/**
 	 * Define the core functionality of the plugin.
 	 *
 	 * Set the plugin name and the plugin version that can be used throughout the plugin.
@@ -73,7 +130,7 @@ class Mailtpl {
 
 		$this->load_dependencies();
 		$this->set_locale();
-		$this->define_admin_hooks();
+		$this->define_hooks();
 
 	}
 
@@ -97,6 +154,8 @@ class Mailtpl {
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mailtpl-loader.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mailtpl-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mailtpl-customizer.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mailtpl-mailer.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-mailtpl-admin.php';
 
 		$this->loader = new Mailtpl_Loader();
@@ -128,19 +187,26 @@ class Mailtpl {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_admin_hooks() {
+	private function define_hooks() {
 
-		$plugin_admin = new Mailtpl_Admin( $this->get_plugin_name(), $this->get_version() );
+		$this->admin       = new Mailtpl_Admin( $this->get_plugin_name(), $this->get_version() );
+		$this->customizer  = new Mailtpl_Customizer( $this->get_plugin_name(), $this->get_version() );
+		$this->mailer      = new Mailtpl_Mailer( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_menu_link' );
-		$this->loader->add_action( 'customize_register', $plugin_admin, 'register_customize_sections' );
-		$this->loader->add_action( 'customize_section_active', $plugin_admin, 'remove_other_sections', 10, 2 );
-		$this->loader->add_action( 'template_include', $plugin_admin, 'capture_customizer_page' );
+		$this->loader->add_action( 'admin_menu', $this->admin, 'add_menu_link' );
+
+		$this->loader->add_action( 'customize_register', $this->customizer, 'register_customize_sections' );
+		$this->loader->add_action( 'customize_section_active', $this->customizer, 'remove_other_sections', 10, 2 );
+		$this->loader->add_action( 'template_include', $this->customizer, 'capture_customizer_page' );
+
+		$this->loader->add_action( 'wp_mail_content_type', $this->mailer, 'set_content_type', 100 );
+		$this->loader->add_action( 'phpmailer_init', $this->mailer, 'send_email' );
 
 		if( isset( $_GET['mailtpl_display'] ) ) {
-			$this->loader->add_action( 'customize_controls_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-			$this->loader->add_action( 'customize_preview_init', $plugin_admin, 'enqueue_template_scripts', 99 );
-			$this->loader->add_action( 'init', $plugin_admin, 'remove_all_actions', 99 );
+			$this->loader->add_action( 'customize_controls_enqueue_scripts', $this->customizer, 'enqueue_scripts' );
+			$this->loader->add_action( 'customize_preview_init', $this->customizer, 'enqueue_template_scripts', 99 );
+
+			$this->loader->add_action( 'init', $this->admin, 'remove_all_actions', 99 );
 		}
 	}
 
@@ -185,4 +251,22 @@ class Mailtpl {
 		return $this->version;
 	}
 
+	public static function opts() {
+		$defaults = self::defaults();
+		return apply_filters( 'mailtpl/opts', get_option( 'mailtpl_opts', $defaults));
+	}
+
+	public static function defaults() {
+		return apply_filters( 'mailtpl/defaults_opts', array(
+			'template'          => 'simple',
+			'body_bg'           => '#e3e3e3',
+			'footer_text'       => '&copy;'.date('Y').' ' .get_bloginfo('name'),
+			'footer_aligment'   => 'center',
+			'footer_bg'         => '#eee',
+			'footer_text_color' => '#777',
+			'header_aligment'   => 'center',
+			'header_bg'         => '#454545',
+			'header_text_color' => '#f1f1f1',
+		));
+	}
 }
