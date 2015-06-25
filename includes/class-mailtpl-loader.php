@@ -117,6 +117,10 @@ class Mailtpl_Loader {
 	public function run() {
 
 		foreach ( $this->filters as $hook ) {
+			if( empty( $hook['component'] ) ) {
+				add_filter( $hook['hook'],  $hook['callback'], $hook['priority'], $hook['accepted_args'] );
+				continue;
+			}
 			add_filter( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
 		}
 

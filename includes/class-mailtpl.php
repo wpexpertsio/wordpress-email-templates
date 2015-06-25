@@ -201,6 +201,9 @@ class Mailtpl {
 
 		$this->loader->add_action( 'wp_mail_content_type', $this->mailer, 'set_content_type', 100 );
 		$this->loader->add_action( 'phpmailer_init', $this->mailer, 'send_email' );
+		$this->loader->add_filter( 'mailtpl/email_content', '', 'wptexturize' );
+		$this->loader->add_filter( 'mailtpl/email_content', '', 'convert_chars' );
+		$this->loader->add_filter( 'mailtpl/email_content', '', 'wpautop' );
 
 		if( isset( $_GET['mailtpl_display'] ) ) {
 			$this->loader->add_action( 'customize_controls_enqueue_scripts', $this->customizer, 'enqueue_scripts' );

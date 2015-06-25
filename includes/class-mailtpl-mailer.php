@@ -41,8 +41,7 @@ class Mailtpl_Mailer {
 
 		$this->plugin_name  = $plugin_name;
 		$this->version      = $version;
-		$defaults           = array( 'template' => 'simple');
-		$this->opts         = get_option('mailtpl_opts' , $defaults);
+		$this->opts         = Mailtpl::opts();
 
 	}
 
@@ -63,7 +62,7 @@ class Mailtpl_Mailer {
 	 */
 	function send_email( $phpmailer ) {
 
-		$message            =  $this->add_template( $phpmailer->Body );
+		$message            =  $this->add_template( apply_filters( 'mailtpl/email_content', $phpmailer->Body ) );
 		$phpmailer->Body    =  $this->replace_placeholders( $message );
 
 	}
@@ -76,9 +75,6 @@ class Mailtpl_Mailer {
 	 */
 	private function add_template( $email ) {
 		$template_dir = apply_filters( 'mailtpl/templates_dir', MAILTPL_PLUGIN_DIR . '/admin/templates/' );
-		echo '<pre>';
-		var_dump($this->opts);
-		echo '<pre>';
 		ob_start();
 		include_once( $template_dir . $this->opts['template'].'.php' );
 		$template = ob_get_contents();
