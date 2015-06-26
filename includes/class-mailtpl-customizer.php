@@ -143,7 +143,7 @@ class Mailtpl_Customizer {
 			'default'               => $this->defaults['template'],
 			'transport'             => 'refresh',
 			'capability'            => 'edit_theme_options',
-			'sanitize_callback'     => '',
+			'sanitize_callback'     => array( $this, 'sanitize_templates'),
 			'sanitize_js_callback'  => '',
 		) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
@@ -152,10 +152,10 @@ class Mailtpl_Customizer {
 				'type'          => 'select',
 				'section'       => 'section_mailtpl_template',
 				'settings'      => 'mailtpl_opts[template]',
-				'choices'       => array(
+				'choices'       => apply_filters( 'mailtpl/template_choices', array(
 					'simple'    => 'Simple Theme',
 					'fullwidth' => 'Fullwidth'
-				),
+				)),
 				'description'   => ''
 			)
 		) );
@@ -165,7 +165,7 @@ class Mailtpl_Customizer {
 			'default'               => $this->defaults['body_bg'],
 			'transport'             => 'postMessage',
 			'capability'            => 'edit_theme_options',
-			'sanitize_callback'     => '',
+			'sanitize_callback'     => 'sanitize_hex_color',
 			'sanitize_js_callback'  => '',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
@@ -193,13 +193,13 @@ class Mailtpl_Customizer {
 			'default'               => $this->defaults['footer_text'],
 			'transport'             => 'postMessage',
 			'capability'            => 'edit_theme_options',
-			'sanitize_callback'     => '',
+			'sanitize_callback'     => array( $this,'sanitize_text'),
 			'sanitize_js_callback'  => '',
 		) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
 			'mailtpl_footer', array(
 				'label'     => __( 'Footer text', $this->plugin_name ),
-				'type'      => 'text',
+				'type'      => 'textarea',
 				'section'   => 'section_mailtpl_footer',
 				'settings'  => 'mailtpl_opts[footer_text]',
 				'description'   => __('Change the email footer here', $this->plugin_name )
@@ -212,7 +212,7 @@ class Mailtpl_Customizer {
 			'default'               => $this->defaults['footer_aligment'],
 			'transport'             => 'postMessage',
 			'capability'            => 'edit_theme_options',
-			'sanitize_callback'     => '',
+			'sanitize_callback'     => array( $this,'sanitize_alignment'),
 			'sanitize_js_callback'  => '',
 		) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
@@ -237,7 +237,7 @@ class Mailtpl_Customizer {
 			'default'               => $this->defaults['footer_bg'],
 			'transport'             => 'postMessage',
 			'capability'            => 'edit_theme_options',
-			'sanitize_callback'     => '',
+			'sanitize_callback'     => 'sanitize_hex_color',
 			'sanitize_js_callback'  => '',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
@@ -254,7 +254,7 @@ class Mailtpl_Customizer {
 			'default'               => $this->defaults['footer_text_color'],
 			'transport'             => 'postMessage',
 			'capability'            => 'edit_theme_options',
-			'sanitize_callback'     => '',
+			'sanitize_callback'     => 'sanitize_hex_color',
 			'sanitize_js_callback'  => '',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
@@ -303,13 +303,13 @@ class Mailtpl_Customizer {
 			'default'               => '',
 			'transport'             => 'postMessage',
 			'capability'            => 'edit_theme_options',
-			'sanitize_callback'     => '',
+			'sanitize_callback'     => array( $this,'sanitize_text'),
 			'sanitize_js_callback'  => '',
 		) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
 			'mailtpl_header_logo_text', array(
 				'label'         => __( 'Logo', $this->plugin_name ),
-				'type'          => 'text',
+				'type'          => 'textarea',
 				'section'       => 'section_mailtpl_header',
 				'settings'      => 'mailtpl_opts[header_logo_text]',
 				'description'   => __( 'Add text to your mail header', $this->plugin_name )
@@ -321,7 +321,7 @@ class Mailtpl_Customizer {
 			'default'               => $this->defaults['header_aligment'],
 			'transport'             => 'postMessage',
 			'capability'            => 'edit_theme_options',
-			'sanitize_callback'     => '',
+			'sanitize_callback'     => array( $this,'sanitize_alignment'),
 			'sanitize_js_callback'  => '',
 		) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
@@ -346,7 +346,7 @@ class Mailtpl_Customizer {
 			'default'               => $this->defaults['header_bg'],
 			'transport'             => 'postMessage',
 			'capability'            => 'edit_theme_options',
-			'sanitize_callback'     => '',
+			'sanitize_callback'     => 'sanitize_hex_color',
 			'sanitize_js_callback'  => '',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
@@ -363,7 +363,7 @@ class Mailtpl_Customizer {
 			'default'               => $this->defaults['header_text_color'],
 			'transport'             => 'postMessage',
 			'capability'            => 'edit_theme_options',
-			'sanitize_callback'     => '',
+			'sanitize_callback'     => 'sanitize_hex_color',
 			'sanitize_js_callback'  => '',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
@@ -377,6 +377,10 @@ class Mailtpl_Customizer {
 
 	}
 
+	/**
+	 * Send test email section
+	 * @param $wp_customize Wp_Customize_Manager
+	 */
 	private function test_section( $wp_customize ) {
 		require_once MAILTPL_PLUGIN_DIR . '/includes/customize-controls/class-send-mail-customize-control.php';
 		$wp_customize->add_section( 'section_mailtpl_test', array(
@@ -404,4 +408,52 @@ class Mailtpl_Customizer {
 		) );
 	}
 
+	/**
+	 * We let them use some safe html
+	 * @param $input string to sanitize
+	 *
+	 * @return string
+	 */
+	public function sanitize_text( $input ) {
+		return wp_kses_post( force_balance_tags( $input ) );
+	}
+
+
+	/**
+	 * Sanitize aligment selects
+	 * @param $input string to sanitize
+	 *
+	 * @return string
+	 */
+	function sanitize_alignment( $input ) {
+		$valid = array(
+			'left',
+			'right',
+			'center',
+		);
+
+		if ( in_array( $input, $valid ) ) {
+			return $input;
+		} else {
+			return '';
+		}
+	}
+	/**
+	 * Sanitize template select
+	 * @param $input string to sanitize
+	 *
+	 * @return string
+	 */
+	function sanitize_templates( $input ) {
+		$valid = apply_filters( 'mailtpl/template_choices', array(
+			'simple'    => 'Simple Theme',
+			'fullwidth' => 'Fullwidth'
+		));
+
+		if ( array_key_exists( $input, $valid ) ) {
+			return $input;
+		} else {
+			return '';
+		}
+	}
 }
