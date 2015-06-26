@@ -1,7 +1,7 @@
 === Email Templates ===
 Contributors: timersys
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K4T6L69EV9G2Q
-Tags: email templates, html email, email template, template, better emails, wp better emails, wp email templates
+Tags: email templates, email template, html email, email template, template, better emails, wp better emails, wp email templates
 Requires at least: 4.0
 Tested up to: 4.2.2
 Stable tag: 1.0.0
