@@ -68,6 +68,22 @@ class Mailtpl_Mailer {
 	}
 
 	/**
+	 * Send a test email to admin email
+	 * @since 1.0.0
+	 */
+	public function send_test_email () {
+		ob_start();
+		include_once( MAILTPL_PLUGIN_DIR . '/admin/templates/partials/default-message.php');
+		$message = ob_get_contents();
+		ob_end_clean();
+		$subject = __( 'Wp Email Templates', $this->plugin_name);
+
+		echo wp_mail( get_bloginfo('admin_email'), $subject, $message);
+
+		die();
+	}
+
+	/**
 	 * Add template to plain mail
 	 * @param $email string Mail to be send
 	 * @since 1.0.0
@@ -101,10 +117,10 @@ class Mailtpl_Mailer {
 		));
 
 		foreach ( $to_replace as $placeholder => $var ) {
-			$message = str_replace( $placeholder , $var, $email );
+			$email = str_replace( $placeholder , $var, $email );
 		}
 
-		return $message;
+		return $email;
 
 	}
 

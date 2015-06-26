@@ -58,6 +58,7 @@ class Mailtpl_Customizer {
 		$this->template_section( $wp_customize );
 		$this->header_section( $wp_customize );
 		$this->footer_section( $wp_customize );
+		$this->test_section( $wp_customize );
 
 		do_action('mailtpl/customize_sections', $wp_customize );
 
@@ -77,7 +78,8 @@ class Mailtpl_Customizer {
 					apply_filters( 'mailtpl/customizer_sections',
 							array(  'section_mailtpl_footer',
 									'section_mailtpl_template',
-									'section_mailtpl_header'
+									'section_mailtpl_header',
+									'section_mailtpl_test'
 							)
 					)
 				)
@@ -139,7 +141,7 @@ class Mailtpl_Customizer {
 		$wp_customize->add_setting( 'mailtpl_opts[template]', array(
 			'type'                  => 'option',
 			'default'               => $this->defaults['template'],
-			'transport'             => 'postMessage',
+			'transport'             => 'refresh',
 			'capability'            => 'edit_theme_options',
 			'sanitize_callback'     => '',
 			'sanitize_js_callback'  => '',
@@ -373,6 +375,33 @@ class Mailtpl_Customizer {
 			)
 		) );
 
+	}
+
+	private function test_section( $wp_customize ) {
+		require_once MAILTPL_PLUGIN_DIR . '/includes/customize-controls/class-send-mail-customize-control.php';
+		$wp_customize->add_section( 'section_mailtpl_test', array(
+			'title' => __( 'Send test email', $this->plugin_name ),
+			'panel' => 'mailtpl',
+		) );
+
+		// image logo
+		$wp_customize->add_setting( 'mailtpl_opts[send_mail]', array(
+			'type'                  => 'option',
+			'default'               => '',
+			'transport'             => 'postMessage',
+			'capability'            => 'edit_theme_options',
+			'sanitize_callback'     => '',
+			'sanitize_js_callback'  => '',
+		) );
+		$wp_customize->add_control( new WP_Send_Mail_Customize_Control( $wp_customize,
+			'mailtpl_test', array(
+				'label'         => __( 'Send test email', $this->plugin_name ),
+				'type'          => 'send_mail',
+				'section'       => 'section_mailtpl_test',
+				'settings'      => 'mailtpl_opts[send_mail]',
+				'description'   => __( 'Save the template and then click the button to send a test email to admin email ', $this->plugin_name ) . get_bloginfo('admin_email')
+			)
+		) );
 	}
 
 }

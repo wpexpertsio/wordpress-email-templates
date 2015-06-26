@@ -17,22 +17,22 @@ $wrapper = "
 	margin:0;
 	padding: 70px 0 70px 0;
 ";
+$border_radius = $settings['template'] == 'simple' ? '6px' : '0px';
 $template_container = "
 	-webkit-box-shadow:0 0 0 3px rgba(0,0,0,0.025) !important;
 	box-shadow:0 0 0 3px rgba(0,0,0,0.025) !important;
-	-webkit-border-radius:6px !important;
-	border-radius:6px !important;
+	-webkit-border-radius:$border_radius !important;
+	border-radius:$border_radius !important;
 	background-color: #fafafa;
-	-webkit-border-radius:6px !important;
 	border-radius:6px !important;
 ";
 $template_header = "
 	background-color: ".$settings['header_bg'].";
 	color: #f1f1f1;
-	-webkit-border-top-left-radius:6px !important;
-	-webkit-border-top-right-radius:6px !important;
-	border-top-left-radius:6px !important;
-	border-top-right-radius:6px !important;
+	-webkit-border-top-left-radius:$border_radius !important;
+	-webkit-border-top-right-radius:$border_radius !important;
+	border-top-left-radius:$border_radius !important;
+	border-top-right-radius:$border_radius !important;
 	border-bottom: 0;
 	font-family:Arial;
 	font-weight:bold;
@@ -41,7 +41,7 @@ $template_header = "
 ";
 $body_content = "
 	background-color: #fafafa;
-	-webkit-border-radius:6px !important;
+	-webkit-border-radius:$border_radius !important;
 	border-radius:6px !important;
 ";
 $body_content_inner = "
@@ -76,7 +76,7 @@ $header_content_h1 = "
         	<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
             	<tr>
                 	<td align="center" valign="top">
-                    	<table border="0" cellpadding="0" cellspacing="0" width="80%" id="template_container" style="<?php echo $template_container; ?>">
+                    	<table border="0" cellpadding="0" cellspacing="0" width="<?php echo $settings['template'] == 'simple' ? '80%' : '100%';?>" id="template_container" style="<?php echo $template_container; ?>">
                         	<tr>
                             	<td align="center" valign="top">
                                     <!-- Header -->

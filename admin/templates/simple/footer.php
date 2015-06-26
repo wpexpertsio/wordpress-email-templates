@@ -7,15 +7,15 @@
  * @package	Wordpress Social Invitations
  * @author Timersys
  */
-if ( ! defined( 'ABSPATH' ) ) exit; 
-
+if ( ! defined( 'ABSPATH' ) ) exit;
+$border_radius = $settings['template'] == 'simple' ? '6px' : '0px';
 $template_footer = "
 	border-top:1px solid #E2E2E2;
 	background: ".$settings['footer_bg'].";
-	-webkit-border-radius:0px 0px 6px 6px;
-	-o-border-radius:0px 0px 6px 6px;
-	-moz-border-radius:0px 0px 6px 6px;
-	border-radius:0px 0px 6px 6px;
+	-webkit-border-radius:0px 0px $border_radius $border_radius;
+	-o-border-radius:0px 0px $border_radius $border_radius;
+	-moz-border-radius:0px 0px $border_radius $border_radius;
+	border-radius:0px 0px $border_radius $border_radius;
 ";
 
 $credit = "

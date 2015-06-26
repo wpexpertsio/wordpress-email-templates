@@ -126,7 +126,7 @@ class Mailtpl {
 	public function __construct() {
 
 		$this->plugin_name = 'mailtpl';
-		$this->version = '1.0.0';
+		$this->version = MAILTPL_VERSION;
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -152,11 +152,11 @@ class Mailtpl {
 	 */
 	private function load_dependencies() {
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mailtpl-loader.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mailtpl-i18n.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mailtpl-customizer.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mailtpl-mailer.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-mailtpl-admin.php';
+		require_once MAILTPL_PLUGIN_DIR . '/includes/class-mailtpl-loader.php';
+		require_once MAILTPL_PLUGIN_DIR . '/includes/class-mailtpl-i18n.php';
+		require_once MAILTPL_PLUGIN_DIR . '/includes/class-mailtpl-customizer.php';
+		require_once MAILTPL_PLUGIN_DIR . '/includes/class-mailtpl-mailer.php';
+		require_once MAILTPL_PLUGIN_DIR . '/admin/class-mailtpl-admin.php';
 
 		$this->loader = new Mailtpl_Loader();
 
@@ -201,6 +201,8 @@ class Mailtpl {
 
 		$this->loader->add_action( 'wp_mail_content_type', $this->mailer, 'set_content_type', 100 );
 		$this->loader->add_action( 'phpmailer_init', $this->mailer, 'send_email' );
+		$this->loader->add_action( 'wp_ajax_mailtpl_send_email', $this->mailer, 'send_test_email' );
+
 		$this->loader->add_filter( 'mailtpl/email_content', '', 'wptexturize' );
 		$this->loader->add_filter( 'mailtpl/email_content', '', 'convert_chars' );
 		$this->loader->add_filter( 'mailtpl/email_content', '', 'wpautop' );
@@ -256,7 +258,7 @@ class Mailtpl {
 
 	public static function opts() {
 		$defaults = self::defaults();
-		return apply_filters( 'mailtpl/opts', get_option( 'mailtpl_opts', $defaults));
+		return apply_filters( 'mailtpl/opts', wp_parse_args(get_option( 'mailtpl_opts', $defaults), $defaults ));
 	}
 
 	public static function defaults() {
