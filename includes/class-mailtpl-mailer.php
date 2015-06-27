@@ -68,6 +68,18 @@ class Mailtpl_Mailer {
 	}
 
 	/**
+	 * Mandrill Compatibility
+	 * @param $message Array
+	 *
+	 * @return Array
+	 */
+	public function send_email_mandrill( $message ) {
+		$message            =  $this->add_template( apply_filters( 'mailtpl/email_content', $message['html'] ) );
+		$message['html']    =  $this->replace_placeholders( $message );
+		return $message;
+	}
+
+	/**
 	 * Send a test email to admin email
 	 * @since 1.0.0
 	 */

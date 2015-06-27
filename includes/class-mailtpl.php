@@ -1,23 +1,9 @@
 <?php
 
 /**
- * The file that defines the core plugin class
- *
- * A class definition that includes attributes and functions used across both the
- * public-facing side of the site and the admin area.
- *
- * @link       https://wp.timersys.com
- * @since      1.0.0
- *
- * @package    Mailtpl
- * @subpackage Mailtpl/includes
- */
-
-/**
  * The core plugin class.
  *
- * This is used to define internationalization, admin-specific hooks, and
- * public-facing site hooks.
+ * This is used to define internationalization and all hooks
  *
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
@@ -137,13 +123,6 @@ class Mailtpl {
 	/**
 	 * Load the required dependencies for this plugin.
 	 *
-	 * Include the following files that make up the plugin:
-	 *
-	 * - Mailtpl_Loader. Orchestrates the hooks of the plugin.
-	 * - Mailtpl_i18n. Defines internationalization functionality.
-	 * - Mailtpl_Admin. Defines all hooks for the admin area.
-	 * - Mailtpl_Public. Defines all hooks for the public side of the site.
-	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
@@ -181,7 +160,7 @@ class Mailtpl {
 	}
 
 	/**
-	 * Register all of the hooks related to the admin area functionality
+	 * Register all of the hooks
 	 * of the plugin.
 	 *
 	 * @since    1.0.0
@@ -200,6 +179,7 @@ class Mailtpl {
 		$this->loader->add_action( 'template_include', $this->customizer, 'capture_customizer_page' );
 
 		$this->loader->add_action( 'phpmailer_init', $this->mailer, 'send_email' );
+		$this->loader->add_action( 'mandrill_payload', $this->mailer, 'send_email_mandrill' );
 		$this->loader->add_action( 'wp_ajax_mailtpl_send_email', $this->mailer, 'send_test_email' );
 		$this->loader->add_action( 'wp_mail_content_type', $this->mailer, 'set_content_type', 100 );
 		$this->loader->add_action( 'wp_mail_from_name', $this->mailer, 'set_from_name' );
