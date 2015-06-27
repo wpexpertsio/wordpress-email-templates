@@ -199,9 +199,11 @@ class Mailtpl {
 		$this->loader->add_action( 'customize_section_active', $this->customizer, 'remove_other_sections', 10, 2 );
 		$this->loader->add_action( 'template_include', $this->customizer, 'capture_customizer_page' );
 
-		$this->loader->add_action( 'wp_mail_content_type', $this->mailer, 'set_content_type', 100 );
 		$this->loader->add_action( 'phpmailer_init', $this->mailer, 'send_email' );
 		$this->loader->add_action( 'wp_ajax_mailtpl_send_email', $this->mailer, 'send_test_email' );
+		$this->loader->add_action( 'wp_mail_content_type', $this->mailer, 'set_content_type', 100 );
+		$this->loader->add_action( 'wp_mail_from_name', $this->mailer, 'set_from_name' );
+		$this->loader->add_action( 'wp_mail_from', $this->mailer, 'set_from_email' );
 
 		$this->loader->add_filter( 'mailtpl/email_content', '', 'wptexturize' );
 		$this->loader->add_filter( 'mailtpl/email_content', '', 'convert_chars' );
@@ -263,6 +265,8 @@ class Mailtpl {
 
 	public static function defaults() {
 		return apply_filters( 'mailtpl/defaults_opts', array(
+			'from_name'         => get_bloginfo('name'),
+			'from_email'        => get_bloginfo('admin_email'),
 			'template'          => 'simple',
 			'body_bg'           => '#e3e3e3',
 			'footer_text'       => '&copy;'.date('Y').' ' .get_bloginfo('name'),

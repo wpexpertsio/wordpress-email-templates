@@ -82,7 +82,8 @@ class Mailtpl_Customizer {
 							array(  'section_mailtpl_footer',
 									'section_mailtpl_template',
 									'section_mailtpl_header',
-									'section_mailtpl_test'
+									'section_mailtpl_test',
+									'section_mailtpl_settings'
 							)
 					)
 				)
@@ -144,7 +145,7 @@ class Mailtpl_Customizer {
 			'title' => __( 'Settings', $this->plugin_name ),
 			'panel' => 'mailtpl',
 		) );
-		$wp_customize->add_setting( 'mailtpl_opts[settings]', array(
+		$wp_customize->add_setting( 'mailtpl_opts[from_name]', array(
 			'type'                  => 'option',
 			'default'               => $this->defaults['from_name'],
 			'transport'             => 'postMessage',
@@ -153,12 +154,30 @@ class Mailtpl_Customizer {
 			'sanitize_js_callback'  => '',
 		) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
-			'mailtpl_settings', array(
+			'mailtpl_from_name', array(
 				'label'         => __( 'From name', $this->plugin_name ),
 				'type'          => 'text',
 				'section'       => 'section_mailtpl_settings',
-				'settings'      => 'mailtpl_opts[settings]',
-				'description'   => __(' Choose email From name - Default:', $this->plugin_name ) . get_bloginfo('name')
+				'settings'      => 'mailtpl_opts[from_name]',
+				'description'   => __('Choose email "From name" - Default:', $this->plugin_name ) . get_bloginfo('name')
+			)
+		) );
+
+		$wp_customize->add_setting( 'mailtpl_opts[from_email]', array(
+			'type'                  => 'option',
+			'default'               => $this->defaults['from_email'],
+			'transport'             => 'postMessage',
+			'capability'            => 'edit_theme_options',
+			'sanitize_callback'     => 'sanitize_text_field',
+			'sanitize_js_callback'  => '',
+		) );
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
+			'mailtpl_from_email', array(
+				'label'         => __( 'From name', $this->plugin_name ),
+				'type'          => 'text',
+				'section'       => 'section_mailtpl_settings',
+				'settings'      => 'mailtpl_opts[from_email]',
+				'description'   => __('Choose "From email" - Default:', $this->plugin_name ) . get_bloginfo('name')
 			)
 		) );
 

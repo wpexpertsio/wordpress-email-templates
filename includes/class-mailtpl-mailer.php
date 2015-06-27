@@ -124,4 +124,22 @@ class Mailtpl_Mailer {
 
 	}
 
+	/**
+	 * Sets email's From email
+	 * @since 1.0.0
+	 * @return string
+	 */
+	public function set_from_email(){
+		return $this->opts['from_email'];
+	}
+
+	/**
+	 * Sets email's From name
+	 * @since 1.0.0
+	 * @return string
+	 */
+	public function set_from_name(){
+		return $this->opts['from_name'];
+	}
+
 }
