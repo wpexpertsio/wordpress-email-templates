@@ -139,12 +139,14 @@ class Mailtpl_Customizer {
 	 */
 	private function settings_section($wp_customize) {
 
-		do_action('mailtpl/sections/settings/before_content');
 
 		$wp_customize->add_section( 'section_mailtpl_settings', array(
 			'title' => __( 'Settings', $this->plugin_name ),
 			'panel' => 'mailtpl',
 		) );
+
+		do_action('mailtpl/sections/settings/before_content', $wp_customize);
+
 		$wp_customize->add_setting( 'mailtpl_opts[from_name]', array(
 			'type'                  => 'option',
 			'default'               => $this->defaults['from_name'],
@@ -182,7 +184,7 @@ class Mailtpl_Customizer {
 		) );
 
 
-		do_action('mailtpl/sections/settings/after_content');
+		do_action('mailtpl/sections/settings/after_content', $wp_customize);
 	}
 
 
@@ -192,12 +194,14 @@ class Mailtpl_Customizer {
 	 */
 	private function template_section($wp_customize) {
 
-		do_action('mailtpl/sections/template/before_content');
 
 		$wp_customize->add_section( 'section_mailtpl_template', array(
 			'title' => __( 'Template', $this->plugin_name ),
 			'panel' => 'mailtpl',
 		) );
+
+		do_action('mailtpl/sections/template/before_content', $wp_customize);
+
 		$wp_customize->add_setting( 'mailtpl_opts[template]', array(
 			'type'                  => 'option',
 			'default'               => $this->defaults['template'],
@@ -236,7 +240,7 @@ class Mailtpl_Customizer {
 				'description'   => __( 'Choose email background color', $this->plugin_name )
 			)
 		) );
-		do_action('mailtpl/sections/template/after_content');
+		do_action('mailtpl/sections/template/after_content', $wp_customize);
 	}
 
 
@@ -246,12 +250,13 @@ class Mailtpl_Customizer {
 	 */
 	private function header_section( $wp_customize ) {
 
-		do_action('mailtpl/sections/header/before_content');
 
 		$wp_customize->add_section( 'section_mailtpl_header', array(
 			'title' => __( 'Email Header', $this->plugin_name ),
 			'panel' => 'mailtpl',
 		) );
+
+		do_action('mailtpl/sections/header/before_content', $wp_customize);
 
 		// image logo
 		$wp_customize->add_setting( 'mailtpl_opts[header_logo]', array(
@@ -349,7 +354,7 @@ class Mailtpl_Customizer {
 				'description'   => __( 'Choose header background color', $this->plugin_name )
 			)
 		) );
-		do_action('mailtpl/sections/header/after_content');
+		do_action('mailtpl/sections/header/after_content', $wp_customize);
 	}
 
 	/**
@@ -359,12 +364,14 @@ class Mailtpl_Customizer {
 	 */
 	private function footer_section($wp_customize) {
 
-		do_action('mailtpl/sections/footer/before_content');
 
 		$wp_customize->add_section( 'section_mailtpl_footer', array(
 			'title' => __( 'Footer', $this->plugin_name ),
 			'panel' => 'mailtpl',
 		) );
+
+		do_action('mailtpl/sections/footer/before_content', $wp_customize);
+
 		$wp_customize->add_setting( 'mailtpl_opts[footer_text]', array(
 			'type'                  => 'option',
 			'default'               => $this->defaults['footer_text'],
@@ -465,7 +472,7 @@ class Mailtpl_Customizer {
 				'description'   => __( 'Display a tiny link to the plugin page', $this->plugin_name )
 			)
 		) );
-		do_action('mailtpl/sections/footer/after_content');
+		do_action('mailtpl/sections/footer/after_content', $wp_customize);
 	}
 
 	/**
@@ -473,12 +480,13 @@ class Mailtpl_Customizer {
 	 * @param $wp_customize Wp_Customize_Manager
 	 */
 	private function test_section( $wp_customize ) {
-		do_action('mailtpl/sections/test/before_content');
 		require_once MAILTPL_PLUGIN_DIR . '/includes/customize-controls/class-send-mail-customize-control.php';
 		$wp_customize->add_section( 'section_mailtpl_test', array(
 			'title' => __( 'Send test email', $this->plugin_name ),
 			'panel' => 'mailtpl',
 		) );
+
+		do_action('mailtpl/sections/test/before_content', $wp_customize);
 
 		// image logo
 		$wp_customize->add_setting( 'mailtpl_opts[send_mail]', array(
@@ -498,7 +506,7 @@ class Mailtpl_Customizer {
 				'description'   => __( 'Save the template and then click the button to send a test email to admin email ', $this->plugin_name ) . get_bloginfo('admin_email')
 			)
 		) );
-		do_action('mailtpl/sections/test/after_content');
+		do_action('mailtpl/sections/test/after_content', $wp_customize);
 	}
 
 	/**
