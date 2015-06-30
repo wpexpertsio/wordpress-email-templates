@@ -104,7 +104,7 @@ class Mailtpl_Customizer {
 	public function capture_customizer_page( $template ){
 
 		if( is_customize_preview() && isset( $_GET['mailtpl_display'] ) && 'true' == $_GET['mailtpl_display'] ){
-			return MAILTPL_PLUGIN_DIR . "/admin/templates/simple.php";
+			return apply_filters( 'mailtpl/customizer_template', MAILTPL_PLUGIN_DIR . "/admin/templates/default.php");
 		}
 		return $template;
 	}
@@ -213,7 +213,7 @@ class Mailtpl_Customizer {
 				'section'       => 'section_mailtpl_template',
 				'settings'      => 'mailtpl_opts[template]',
 				'choices'       => apply_filters( 'mailtpl/template_choices', array(
-					'simple'    => 'Simple Theme',
+					'boxed'    => 'Boxed',
 					'fullwidth' => 'Fullwidth'
 				)),
 				'description'   => ''
@@ -516,7 +516,7 @@ class Mailtpl_Customizer {
 	 */
 	function sanitize_templates( $input ) {
 		$valid = apply_filters( 'mailtpl/template_choices', array(
-			'simple'    => 'Simple Theme',
+			'boxed'    => 'Simple Theme',
 			'fullwidth' => 'Fullwidth'
 		));
 

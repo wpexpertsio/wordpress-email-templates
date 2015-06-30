@@ -102,9 +102,9 @@ class Mailtpl_Mailer {
 	 * @return string
 	 */
 	private function add_template( $email ) {
-		$template_dir = apply_filters( 'mailtpl/templates_dir', MAILTPL_PLUGIN_DIR . '/admin/templates/' );
+		$template = apply_filters( 'mailtpl/customizer_template', MAILTPL_PLUGIN_DIR . "/admin/templates/default.php");
 		ob_start();
-		include_once( $template_dir . $this->opts['template'].'.php' );
+		include_once( $template );
 		$template = ob_get_contents();
 		ob_end_clean();
 		return str_replace( '%%MAILCONTENT%%', $email, $template );

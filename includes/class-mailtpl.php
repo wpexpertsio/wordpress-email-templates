@@ -247,7 +247,7 @@ class Mailtpl {
 		return apply_filters( 'mailtpl/defaults_opts', array(
 			'from_name'         => get_bloginfo('name'),
 			'from_email'        => get_bloginfo('admin_email'),
-			'template'          => 'simple',
+			'template'          => 'boxed',
 			'body_bg'           => '#e3e3e3',
 			'footer_text'       => '&copy;'.date('Y').' ' .get_bloginfo('name'),
 			'footer_aligment'   => 'center',
