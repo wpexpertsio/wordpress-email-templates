@@ -1,6 +1,6 @@
 <?php
 class WP_Send_Mail_Customize_Control extends WP_Customize_Control {
-	public $type = 'send_mail';
+	public $type = 'mailtpl_send_mail';
 	/**
 	 * Render the control's content.
 	 */

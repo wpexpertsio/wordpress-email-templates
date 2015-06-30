@@ -500,7 +500,7 @@ class Mailtpl_Customizer {
 		$wp_customize->add_control( new WP_Send_Mail_Customize_Control( $wp_customize,
 			'mailtpl_test', array(
 				'label'         => __( 'Send test email', $this->plugin_name ),
-				'type'          => 'send_mail',
+				'type'          => 'mailtpl_send_mail',
 				'section'       => 'section_mailtpl_test',
 				'settings'      => 'mailtpl_opts[send_mail]',
 				'description'   => __( 'Save the template and then click the button to send a test email to admin email ', $this->plugin_name ) . get_bloginfo('admin_email')
