@@ -61,6 +61,9 @@ $credit = "
         </td>
     </tr>
             </table>
+			<?php $powered_link = $settings['footer_powered_by'] != 'off' ? 'block':'none';?>
+			<p id="powered" style="text-align: center;font-size: 11px;display: <?php echo $powered_link;?>">Powered by <a href="https://wp.timersys.com/email-templates/?utm_source=emails_template_plugin&utm_medium=powered_link&utm_campaign=Email%20Templates">Email Templates Plugin</a></p>
+
         </td>
     </tr>
 </table>

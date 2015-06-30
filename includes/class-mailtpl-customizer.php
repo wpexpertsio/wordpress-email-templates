@@ -159,7 +159,7 @@ class Mailtpl_Customizer {
 				'type'          => 'text',
 				'section'       => 'section_mailtpl_settings',
 				'settings'      => 'mailtpl_opts[from_name]',
-				'description'   => __('Choose email "From name" - Default:', $this->plugin_name ) . get_bloginfo('name')
+				'description'   => __('Default: ', $this->plugin_name ) . get_bloginfo('name')
 			)
 		) );
 
@@ -173,11 +173,11 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
 			'mailtpl_from_email', array(
-				'label'         => __( 'From name', $this->plugin_name ),
+				'label'         => __( 'From Email', $this->plugin_name ),
 				'type'          => 'text',
 				'section'       => 'section_mailtpl_settings',
 				'settings'      => 'mailtpl_opts[from_email]',
-				'description'   => __('Choose "From email" - Default:', $this->plugin_name ) . get_bloginfo('name')
+				'description'   => __('Default: ', $this->plugin_name ) . get_bloginfo('admin_email')
 			)
 		) );
 
@@ -440,6 +440,29 @@ class Mailtpl_Customizer {
 				'section'       => 'section_mailtpl_footer',
 				'settings'      => 'mailtpl_opts[footer_text_color]',
 				'description'   => __( 'Choose header background color', $this->plugin_name )
+			)
+		) );
+
+		// Powered by
+		$wp_customize->add_setting( 'mailtpl_opts[footer_powered_by]', array(
+			'type'                  => 'option',
+			'default'               => $this->defaults['footer_powered_by'],
+			'transport'             => 'postMessage',
+			'capability'            => 'edit_theme_options',
+			'sanitize_callback'     => '',
+			'sanitize_js_callback'  => '',
+		) );
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
+			'mailtpl_footer_powered_by', array(
+				'label'         => __( 'Powered by', $this->plugin_name ),
+				'section'       => 'section_mailtpl_footer',
+				'settings'      => 'mailtpl_opts[footer_powered_by]',
+				'type'          => 'select',
+				'choices'       => array(
+					'off'   => 'Off',
+					'on'    => 'On',
+				),
+				'description'   => __( 'Display a tiny link to the plugin page', $this->plugin_name )
 			)
 		) );
 		do_action('mailtpl/sections/footer/after_content');

@@ -60,10 +60,20 @@
             } );
         } );
 
-        // Update the site footer in real time...
+
         wp.customize( 'mailtpl_opts[footer_text]', function( value ) {
             value.bind( function( newval ) {
                 $( '#credit' ).html( newval );
+            } );
+        } );
+
+        wp.customize( 'mailtpl_opts[footer_powered_by]', function( value ) {
+            value.bind( function( newval ) {
+                if( newval == 'off' ) {
+                    $( '#powered' ).hide();
+                } else {
+                    $( '#powered' ).show();
+                }
             } );
         } );
 
