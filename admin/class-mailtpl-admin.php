@@ -50,7 +50,7 @@ class Mailtpl_Admin {
 	 */
 	public function add_menu_link() {
 		#add_menu_page( 'Email Templates', 'Email Templates', 'manage_options', $this->plugin_name , array( $this, 'settings_page'), 'dashicons-feedback'  );
-		global $menu;
+		global $submenu;
 		$link = add_query_arg(
 			array(
 				'url'               => urlencode( site_url('/?mailtpl_display=true') ),
@@ -59,7 +59,8 @@ class Mailtpl_Admin {
 			),
 			admin_url( 'customize.php' )
 		);
-		array_push($menu , array( 'Email Templates', 'manage_options', $link, '', 'menu-top', 'menu-mailtpl', 'dashicons-feedback' ) );
+
+		array_push($submenu['themes.php'] , array( 'Email Templates', 'manage_options', $link, '' ) );
 
 	}
 	/**
