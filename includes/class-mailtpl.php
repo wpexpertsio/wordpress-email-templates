@@ -173,6 +173,9 @@ class Mailtpl {
 		$this->mailer      = new Mailtpl_Mailer( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_menu', $this->admin, 'add_menu_link' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $this->admin, 'wp_pointers', 1000 );
+		$this->loader->add_action( 'mailtpl/admin_pointers-plugins', $this->admin, 'add_wp_pointer' );
+		$this->loader->add_action( 'mailtpl/admin_pointers-dashboard', $this->admin, 'add_wp_pointer' );
 
 		$this->loader->add_action( 'customize_register', $this->customizer, 'register_customize_sections' );
 		$this->loader->add_action( 'customize_section_active', $this->customizer, 'remove_other_sections', 10, 2 );
@@ -261,7 +264,7 @@ class Mailtpl {
 			'footer_aligment'   => 'center',
 			'footer_bg'         => '#eee',
 			'footer_text_color' => '#777',
-			'footer_powered_by' => 'off',
+			'footer_powered_by' => 'on',
 			'header_aligment'   => 'center',
 			'header_bg'         => '#454545',
 			'header_text_color' => '#f1f1f1',
