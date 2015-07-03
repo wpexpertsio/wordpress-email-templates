@@ -78,17 +78,21 @@ class Mailtpl_Admin {
 			'customize-preview',
 			'customize-controls',
 		);
-
-		foreach( $wp_scripts->queue as $handle ){
-			if( in_array($handle, $exceptions))
-				continue;
-			wp_dequeue_script($handle);
+		
+		if ( is_object( $wp_scripts ) && isset( $wp_scripts->queue ) && is_array( $wp_scripts->queue ) ) {
+			foreach( $wp_scripts->queue as $handle ){
+				if( in_array($handle, $exceptions))
+					continue;
+				wp_dequeue_script($handle);
+			}
 		}
 
-		foreach( $wp_styles->queue as $handle ){
-			if( in_array($handle, $exceptions) )
-				continue;
-			wp_dequeue_style($handle);
+		if ( is_object( $wp_styles ) && isset( $wp_styles->queue ) && is_array( $wp_styles->queue ) ) {
+			foreach( $wp_styles->queue as $handle ){
+				if( in_array($handle, $exceptions) )
+					continue;
+				wp_dequeue_style($handle);
+			}
 		}
 
 		// Now remove actions

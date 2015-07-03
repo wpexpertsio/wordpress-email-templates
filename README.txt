@@ -21,7 +21,7 @@ Email Template plugin uses Customizer to make it easier. Preview your changes or
 
 = Collaborate in Github = - [https://github.com/timersys/wordpress-email-templates](https://github.com/timersys/wordpress-email-templates)
 
-* Thanks to @elioribero for sharing some customizer tips for plugins :)
+* Thanks to @eliorivero for sharing some customizer tips for plugins :)
 
 == Installation ==
 
