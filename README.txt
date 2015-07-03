@@ -19,7 +19,7 @@ Send beautiful emails with the WordPress Email Templates plugin. Choose one temp
 
 Collaborate in Github - [https://github.com/timersys/wordpress-email-templates](https://github.com/timersys/wordpress-email-templates)
 
-* Thanks to @elioribero for sharing some customizer tips for plugins :)
+* Thanks to @eliorivero for sharing some customizer tips for plugins :)
 
 == Installation ==
 
