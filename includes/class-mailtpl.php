@@ -117,7 +117,7 @@ class Mailtpl {
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_hooks();
-
+		do_action('mailtpl/init');
 	}
 
 	/**
@@ -238,11 +238,19 @@ class Mailtpl {
 		return $this->version;
 	}
 
+	/**
+	 * Load plugin options with defaults
+	 * @return array
+	 */
 	public static function opts() {
 		$defaults = self::defaults();
 		return apply_filters( 'mailtpl/opts', wp_parse_args(get_option( 'mailtpl_opts', $defaults), $defaults ));
 	}
 
+	/**
+	 * Default values of plugin
+	 * @return array
+	 */
 	public static function defaults() {
 		return apply_filters( 'mailtpl/defaults_opts', array(
 			'from_name'         => get_bloginfo('name'),
