@@ -11,13 +11,15 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Send beautiful emails with the WordPress Email Templates plugin
 == Description ==
 
-Send beautiful emails with the WordPress Email Templates plugin. Choose one template, add a logo, change colors, add some footer text and start sending nice emails in WordPress
+Send beautiful emails with the WordPress Email Templates plugin. Choose your template style, add a logo or some text, change colors, edit footer and start sending nice emails in WordPress.
+
+Email Template plugin uses Customizer to make it easier. Preview your changes or send a test email with just a few clicks.
 
 = Requires WordPress 4.0.0 =
 
-=Help with translations= - [https://www.transifex.com/projects/p/wp-email-templates/](https://www.transifex.com/projects/p/wp-email-templates/)
+= Help with translations = - [https://www.transifex.com/projects/p/wp-email-templates/](https://www.transifex.com/projects/p/wp-email-templates/)
 
-Collaborate in Github - [https://github.com/timersys/wordpress-email-templates](https://github.com/timersys/wordpress-email-templates)
+= Collaborate in Github = - [https://github.com/timersys/wordpress-email-templates](https://github.com/timersys/wordpress-email-templates)
 
 * Thanks to @elioribero for sharing some customizer tips for plugins :)
 
@@ -25,7 +27,7 @@ Collaborate in Github - [https://github.com/timersys/wordpress-email-templates](
 
 1. Upload the plugin in /wp-admin/plugin-install.php
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Click on Email Templates to start editing
+3. Click on Appearance -> "Email Templates" to start editing
 
 == Screenshots ==
 
