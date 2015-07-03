@@ -56,7 +56,28 @@ class Mailtpl_Customizer {
 		) );
 
 		do_action('mailtpl/sections/before', $wp_customize );
-
+		// Add sections
+		$wp_customize->add_section( 'section_mailtpl_settings', array(
+			'title' => __( 'Settings', $this->plugin_name ),
+			'panel' => 'mailtpl',
+		) );
+		$wp_customize->add_section( 'section_mailtpl_template', array(
+			'title' => __( 'Template', $this->plugin_name ),
+			'panel' => 'mailtpl',
+		) );
+		$wp_customize->add_section( 'section_mailtpl_header', array(
+			'title' => __( 'Email Header', $this->plugin_name ),
+			'panel' => 'mailtpl',
+		) );
+		$wp_customize->add_section( 'section_mailtpl_footer', array(
+			'title' => __( 'Footer', $this->plugin_name ),
+			'panel' => 'mailtpl',
+		) );
+		$wp_customize->add_section( 'section_mailtpl_test', array(
+			'title' => __( 'Send test email', $this->plugin_name ),
+			'panel' => 'mailtpl',
+		) );
+		// Populate sections
 		$this->settings_section( $wp_customize );
 		$this->template_section( $wp_customize );
 		$this->header_section( $wp_customize );
@@ -139,12 +160,6 @@ class Mailtpl_Customizer {
 	 */
 	private function settings_section($wp_customize) {
 
-
-		$wp_customize->add_section( 'section_mailtpl_settings', array(
-			'title' => __( 'Settings', $this->plugin_name ),
-			'panel' => 'mailtpl',
-		) );
-
 		do_action('mailtpl/sections/settings/before_content', $wp_customize);
 
 		$wp_customize->add_setting( 'mailtpl_opts[from_name]', array(
@@ -193,12 +208,6 @@ class Mailtpl_Customizer {
 	 * @param $wp_customize WP_Customize_Manager
 	 */
 	private function template_section($wp_customize) {
-
-
-		$wp_customize->add_section( 'section_mailtpl_template', array(
-			'title' => __( 'Template', $this->plugin_name ),
-			'panel' => 'mailtpl',
-		) );
 
 		do_action('mailtpl/sections/template/before_content', $wp_customize);
 
@@ -249,12 +258,6 @@ class Mailtpl_Customizer {
 	 * @param $wp_customize WP_Customize_Manager
 	 */
 	private function header_section( $wp_customize ) {
-
-
-		$wp_customize->add_section( 'section_mailtpl_header', array(
-			'title' => __( 'Email Header', $this->plugin_name ),
-			'panel' => 'mailtpl',
-		) );
 
 		do_action('mailtpl/sections/header/before_content', $wp_customize);
 
@@ -363,12 +366,6 @@ class Mailtpl_Customizer {
 	 * @param $wp_customize WP_Customize_Manager
 	 */
 	private function footer_section($wp_customize) {
-
-
-		$wp_customize->add_section( 'section_mailtpl_footer', array(
-			'title' => __( 'Footer', $this->plugin_name ),
-			'panel' => 'mailtpl',
-		) );
 
 		do_action('mailtpl/sections/footer/before_content', $wp_customize);
 
@@ -481,10 +478,6 @@ class Mailtpl_Customizer {
 	 */
 	private function test_section( $wp_customize ) {
 		require_once MAILTPL_PLUGIN_DIR . '/includes/customize-controls/class-send-mail-customize-control.php';
-		$wp_customize->add_section( 'section_mailtpl_test', array(
-			'title' => __( 'Send test email', $this->plugin_name ),
-			'panel' => 'mailtpl',
-		) );
 
 		do_action('mailtpl/sections/test/before_content', $wp_customize);
 
@@ -526,7 +519,7 @@ class Mailtpl_Customizer {
 	 *
 	 * @return string
 	 */
-	function sanitize_alignment( $input ) {
+	public function sanitize_alignment( $input ) {
 		$valid = array(
 			'left',
 			'right',
@@ -545,7 +538,7 @@ class Mailtpl_Customizer {
 	 *
 	 * @return string
 	 */
-	function sanitize_templates( $input ) {
+	public function sanitize_templates( $input ) {
 		$valid = apply_filters( 'mailtpl/template_choices', array(
 			'boxed'    => 'Simple Theme',
 			'fullwidth' => 'Fullwidth'
