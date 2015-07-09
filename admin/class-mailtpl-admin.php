@@ -49,18 +49,15 @@ class Mailtpl_Admin {
 	 * Create the wp-admin menu link
 	 */
 	public function add_menu_link() {
-		#add_menu_page( 'Email Templates', 'Email Templates', 'manage_options', $this->plugin_name , array( $this, 'settings_page'), 'dashicons-feedback'  );
-		global $submenu;
 		$link = add_query_arg(
 			array(
 				'url'               => urlencode( site_url('/?mailtpl_display=true') ),
 				'return'            => urlencode( admin_url() ),
 				'mailtpl_display'   => 'true'
 			),
-			admin_url( 'customize.php' )
+			'customize.php'
 		);
-
-		array_push($submenu['themes.php'] , array( 'Email Templates', 'manage_options', $link, '' ) );
+		add_submenu_page( 'themes.php', 'Email Templates', 'Email Templates', apply_filters( 'mailtpl/roles', 'edit_theme_options'), $link , null );
 
 	}
 	/**
