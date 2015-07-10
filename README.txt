@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: email templates, email template, html email, email template, template, better emails, wp better emails, wp email templates
 Requires at least: 4.0
 Tested up to: 4.2.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,5 +37,14 @@ Email Template plugin uses Customizer to make it easier. Preview your changes or
 
 == Changelog ==
 
+= 1.0.1 =
+
+* Bug - Template is cached to avoid issues when sending multiple emails
+* Added fallback text email for non html email clients and to improve inbox hits
+* Added site url to the logo/text logo in header
+* Fixed some typos in descriptions
+* Added Emails templates menu using add_submenu_page
+
+
 = 1.0 =
-* First realease
+* First release
