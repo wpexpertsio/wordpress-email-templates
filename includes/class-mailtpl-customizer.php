@@ -354,7 +354,7 @@ class Mailtpl_Customizer {
 				'label'         => __( 'Text Color', $this->plugin_name ),
 				'section'       => 'section_mailtpl_header',
 				'settings'      => 'mailtpl_opts[header_text_color]',
-				'description'   => __( 'Choose header background color', $this->plugin_name )
+				'description'   => __( 'Choose header text color', $this->plugin_name )
 			)
 		) );
 		do_action('mailtpl/sections/header/after_content', $wp_customize);
@@ -443,7 +443,7 @@ class Mailtpl_Customizer {
 				'label'         => __( 'Text Color', $this->plugin_name ),
 				'section'       => 'section_mailtpl_footer',
 				'settings'      => 'mailtpl_opts[footer_text_color]',
-				'description'   => __( 'Choose header background color', $this->plugin_name )
+				'description'   => __( 'Choose footer text color', $this->plugin_name )
 			)
 		) );
 
