@@ -63,7 +63,7 @@ class Mailtpl_Mailer {
 	function send_email( $phpmailer ) {
 
 		$message            =  $this->add_template( apply_filters( 'mailtpl/email_content', $phpmailer->Body ) );
-		$phpmailer->AltBody =  $this->replace_placeholders( $phpmailer->Body );
+		$phpmailer->AltBody =  $this->replace_placeholders( strip_tags($phpmailer->Body) );
 		$phpmailer->Body    =  $this->replace_placeholders( $message );
 	}
 
