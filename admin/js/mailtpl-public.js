@@ -10,16 +10,16 @@
         wp.customize( 'mailtpl_opts[header_logo]', function( value ) {
             value.bind( function( newval ) {
                 if( newval.length ) {
-                    $( '#logo' ).html( '<img src="'+newval+'" alt="logo"/>' );
+                    $( '#logo a' ).html( '<img src="'+newval+'" alt="logo"/>' );
                 } else {
-                    $( '#logo' ).html( '' );
+                    $( '#logo a' ).html( '' );
                 }
             } );
         } );
         wp.customize( 'mailtpl_opts[header_logo_text]', function( value ) {
             value.bind( function( newval ) {
                 if( newval.length )
-                    $( '#logo' ).html( newval );
+                    $( '#logo a' ).text( newval );
             } );
         } );
         wp.customize( 'mailtpl_opts[header_aligment]', function( value ) {

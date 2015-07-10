@@ -62,8 +62,10 @@ $header_content_h1 = "
 	text-align:".$settings['header_aligment'].";
 	line-height: 150%;
 ";
-
-
+$header_content_h1_a = "
+	color: ".$settings['header_text_color'].";
+	text-decoration: none;
+";
 ?>
 
 <html>
@@ -83,14 +85,18 @@ $header_content_h1 = "
                                 	<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_header" style="<?php echo $template_header; ?>"">
                                         <tr>
                                             <td>
-                                            	<h1 style="<?php echo $header_content_h1; ?>" id="logo"><?php
+                                            	<h1 style="<?php echo $header_content_h1; ?>" id="logo">
+		                                            <a style="<?php echo $header_content_h1_a;?>" href="<?php echo apply_filters( 'mailtpl/templates/header_logo_url', home_url());?>" title="<?php echo apply_filters( 'mailtpl/templates/header_logo_url_title', get_bloginfo('name') );?>"><?php
 		                                            if( !empty($settings['header_logo']) ) {
 			                                            echo '<img src="'.apply_filters( 'mailtpl/templates/header_logo', $settings['header_logo'] ).'" alt="logo"/>';
 		                                            } elseif ( !empty( $settings['header_logo_text'] ) ) {
 														echo $settings['header_logo_text'];
 		                                            } else {
 														echo get_bloginfo('name');
-		                                            }  ?></h1>
+		                                            }  ?>
+		                                            </a>
+	                                            </h1>
+
                                             </td>
                                         </tr>
                                     </table>
