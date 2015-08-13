@@ -188,6 +188,8 @@ class Mailtpl {
 		$this->loader->add_action( 'wp_mail_from_name', $this->mailer, 'set_from_name' );
 		$this->loader->add_action( 'wp_mail_from', $this->mailer, 'set_from_email' );
 
+		$this->loader->add_filter( 'retrieve_password_message', $this->mailer, 'clean_retrieve_password' );
+
 		$this->loader->add_filter( 'mailtpl/email_content', '', 'wptexturize' );
 		$this->loader->add_filter( 'mailtpl/email_content', '', 'convert_chars' );
 		$this->loader->add_filter( 'mailtpl/email_content', '', 'wpautop' );

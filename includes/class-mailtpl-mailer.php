@@ -164,4 +164,14 @@ class Mailtpl_Mailer {
 		return $this->opts['from_name'];
 	}
 
+	/**
+	 * Clear retrieve password message for wrong html tag
+	 * @param $message
+	 *
+	 * @return mixed
+	 */
+	public function clean_retrieve_password( $message ) {
+		return preg_replace( '@<(http[^> ]+)>@', '$1', $message );
+	}
+
 }
