@@ -1,10 +1,10 @@
 === Email Templates ===
 Contributors: timersys
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K4T6L69EV9G2Q
-Tags: email templates, email template, html email, email template, template, better emails, wp better emails, wp email templates
+Tags: email templates, email template, html email, email template, template, better emails, wp better emails, wp email templates, html emails
 Requires at least: 4.0
-Tested up to: 4.2.2
-Stable tag: 1.0.1
+Tested up to: 4.3
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,10 @@ Email Template plugin uses Customizer to make it easier. Preview your changes or
 3. Another example
 
 == Changelog ==
+
+= 1.0.2 =
+
+* Fixed email link on retrieve password emails from WP
 
 = 1.0.1 =
 
