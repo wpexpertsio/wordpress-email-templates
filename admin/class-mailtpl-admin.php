@@ -174,4 +174,29 @@ class Mailtpl_Admin {
 		);
 		return $pointers;
 	}
+
+	/**
+	 * Add our template to Easy Digital Downloads
+	 * @param $templates
+	 */
+	function add_edd_template( $templates ) {
+		$templates['mailtpl'] = 'Email Template Plugin';
+		return $templates;
+	}
+
+	/**
+	 * We need to hook into edd_email_send_before to change get_template to 'none' before it sends so we don't loose formatting
+	 * @return void
+	 */
+	function edd_get_template() {
+		add_filter('edd_email_template', array( $this, 'set_edd_template'));
+	}
+
+	/**
+	 * We change edd_template as we are using an html template to avoid all the get_template_parts that are taken care now by our plugin
+	 * @return string
+	 */
+	function set_edd_template(){
+		return 'none';
+	}
 }

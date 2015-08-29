@@ -177,6 +177,9 @@ class Mailtpl {
 		$this->loader->add_action( 'mailtpl/admin_pointers-plugins', $this->admin, 'add_wp_pointer' );
 		$this->loader->add_action( 'mailtpl/admin_pointers-dashboard', $this->admin, 'add_wp_pointer' );
 
+		$this->loader->add_filter( 'edd_email_templates', $this->admin, 'add_edd_template' );
+		$this->loader->add_action( 'edd_email_send_before', $this->admin, 'edd_get_template' );
+
 		$this->loader->add_action( 'customize_register', $this->customizer, 'register_customize_sections' );
 		$this->loader->add_action( 'customize_section_active', $this->customizer, 'remove_other_sections', 10, 2 );
 		$this->loader->add_action( 'template_include', $this->customizer, 'capture_customizer_page' );
