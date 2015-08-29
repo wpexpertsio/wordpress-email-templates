@@ -199,4 +199,18 @@ class Mailtpl_Admin {
 	function set_edd_template(){
 		return 'none';
 	}
+
+	/**
+	 * WooCommerce Integration.
+	 * We first remove our autoformatting as woocommerce will also add it
+	 * Then we remove their template header and footer to use ours
+	 * @param $WC_Emails Instace on WC_Emails class
+	 */
+	function woocommerce_integration( $WC_Emails ) {
+		remove_filter( 'mailtpl/email_content', 'wptexturize' );
+		remove_filter( 'mailtpl/email_content', 'convert_chars' );
+		remove_filter( 'mailtpl/email_content', 'wpautop' );
+		remove_action('woocommerce_email_header', array($WC_Emails , 'email_header'));
+		remove_action('woocommerce_email_footer', array($WC_Emails , 'email_footer'));
+	}
 }
