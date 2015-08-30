@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: email templates, email template, html email, email template, template, better emails, wp better emails, wp email templates, html emails
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 1.0.2
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,9 +19,17 @@ Email Template plugin uses Customizer to make it easier. Preview your changes or
 
 = Help with translations = - [https://www.transifex.com/projects/p/wp-email-templates/](https://www.transifex.com/projects/p/wp-email-templates/)
 
+Currently Available in:
+* English
+* Spanish
+* Chinese
+* Portuguese
+
 = Collaborate in Github = - [https://github.com/timersys/wordpress-email-templates](https://github.com/timersys/wordpress-email-templates)
 
-* Thanks to @eliorivero for sharing some customizer tips for plugins :)
+
+
+Thanks to @eliorivero for sharing some customizer tips for plugins :)
 
 == Installation ==
 
@@ -36,6 +44,14 @@ Email Template plugin uses Customizer to make it easier. Preview your changes or
 3. Another example
 
 == Changelog ==
+
+= 1.1 =
+* Fixed bug with wpmandrill
+* Added chinese, spanish and portuguese languages
+* Added new font size control
+* WooCommerce Integration
+* Easy Digital Downloads Integration
+* Added Email body settings
 
 = 1.0.2 =
 

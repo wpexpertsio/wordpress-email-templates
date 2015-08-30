@@ -154,7 +154,7 @@ class Mailtpl_Customizer {
 	 * @since 1.0.0
 	 */
 	public function enqueue_template_scripts(){
-		wp_enqueue_script( 'mailtpl-front-js', MAILTPL_PLUGIN_URL . '/admin/js/mailtpl-public.js', array(  'jquery', 'customize-preview' ), time(), true );
+		wp_enqueue_script( 'mailtpl-front-js', MAILTPL_PLUGIN_URL . '/admin/js/mailtpl-public.js', array(  'jquery', 'customize-preview' ), $this->version, true );
 		wp_enqueue_style( 'mailtpl-css', MAILTPL_PLUGIN_URL . '/admin/css/mailtpl-admin.css', '', $this->version, false );
 	}
 
