@@ -22,7 +22,7 @@ $credit = "
 	border:0;
 	color: ".$settings['footer_text_color'].";
 	font-family: Arial;
-	font-size:12px;
+	font-size: ".$settings['footer_text_size']."px;
 	line-height:125%;
 	text-align:".$settings['footer_aligment'].";
 ";

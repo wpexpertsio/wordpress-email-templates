@@ -1,10 +1,13 @@
 (function( $ ) {
 
     $(window).load(function () {
-        if ( ! _.isUndefined( mailtpl ) ) {
-            wp.customize.control( mailtpl.focus ).focus();
-        }
 
+        wp.customize.panel( 'mailtpl' ).focus();
+        $('.mailtpl_range').on('input',function(){
+            var val = $(this).val();
+            $(this).parent().find('.font_value').html(val);
+            $(this).val(val);
+        });
         $('#mailtpl-send_mail').on('click', function(e){
             e.preventDefault();
             $('#mailtpl-spinner').fadeIn();

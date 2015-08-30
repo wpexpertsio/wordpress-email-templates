@@ -40,14 +40,12 @@ $template_header = "
 	vertical-align:middle;
 ";
 $body_content = "
-	background-color: #fafafa;
-	-webkit-border-radius:$border_radius !important;
-	border-radius:6px !important;
+	background-color: ".$settings['email_body_bg'].";
 ";
 $body_content_inner = "
-	color: #888888;
+	color: ".$settings['body_text_color'].";
 	font-family:Arial;
-	font-size:14px;
+	font-size: ".$settings['body_text_size']."px;
 	line-height:150%;
 	text-align:left;
 ";
@@ -57,7 +55,7 @@ $header_content_h1 = "
 	padding: 28px 24px;
 	display:block;
 	font-family:Arial;
-	font-size:30px;
+	font-size: ".$settings['header_text_size']."px;
 	font-weight:bold;
 	text-align:".$settings['header_aligment'].";
 	line-height: 150%;
@@ -108,9 +106,9 @@ $header_content_h1_a = "
                                     <!-- Body -->
                                 	<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_body">
                                     	<tr>
-                                            <td valign="top" style="<?php echo $body_content; ?>">
+                                            <td valign="top" style="<?php echo $body_content; ?>" id="mailtpl_body_bg">
                                                 <!-- Content -->
                                                 <table border="0" cellpadding="20" cellspacing="0" width="100%">
                                                     <tr>
                                                         <td valign="top">
-                                                            <div style="<?php echo $body_content_inner; ?>">
+                                                            <div style="<?php echo $body_content_inner; ?>" id="mailtpl_body">

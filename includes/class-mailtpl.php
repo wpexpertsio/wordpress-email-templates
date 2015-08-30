@@ -269,11 +269,16 @@ class Mailtpl {
 			'footer_text'       => '&copy;'.date('Y').' ' .get_bloginfo('name'),
 			'footer_aligment'   => 'center',
 			'footer_bg'         => '#eee',
+			'footer_text_size'  => '12',
 			'footer_text_color' => '#777',
 			'footer_powered_by' => 'on',
 			'header_aligment'   => 'center',
 			'header_bg'         => '#454545',
+			'header_text_size'  => '30',
 			'header_text_color' => '#f1f1f1',
+			'email_body_bg'     => '#fafafa',
+			'body_text_size'    => '14',
+			'body_text_color'   => '#888',
 		));
 	}
 }
