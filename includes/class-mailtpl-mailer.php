@@ -81,8 +81,8 @@ class Mailtpl_Mailer {
 	 * @return Array
 	 */
 	public function send_email_mandrill( $message ) {
-		$message            =  $this->add_template( apply_filters( 'mailtpl/email_content', $message['html'] ) );
-		$message['html']    =  $this->replace_placeholders( $message );
+		$temp_message       =  $this->add_template( apply_filters( 'mailtpl/email_content', $message['html'] ) );
+		$message['html']    =  $this->replace_placeholders( $temp_message );
 		return $message;
 	}
 

@@ -174,4 +174,43 @@ class Mailtpl_Admin {
 		);
 		return $pointers;
 	}
+
+	/**
+	 * Add our template to Easy Digital Downloads
+	 * @param $templates
+	 */
+	function add_edd_template( $templates ) {
+		$templates['mailtpl'] = 'Email Template Plugin';
+		return $templates;
+	}
+
+	/**
+	 * We need to hook into edd_email_send_before to change get_template to 'none' before it sends so we don't loose formatting
+	 * @return void
+	 */
+	function edd_get_template() {
+		add_filter('edd_email_template', array( $this, 'set_edd_template'));
+	}
+
+	/**
+	 * We change edd_template as we are using an html template to avoid all the get_template_parts that are taken care now by our plugin
+	 * @return string
+	 */
+	function set_edd_template(){
+		return 'none';
+	}
+
+	/**
+	 * WooCommerce Integration.
+	 * We first remove our autoformatting as woocommerce will also add it
+	 * Then we remove their template header and footer to use ours
+	 * @param $WC_Emails Instace on WC_Emails class
+	 */
+	function woocommerce_integration( $WC_Emails ) {
+		remove_filter( 'mailtpl/email_content', 'wptexturize' );
+		remove_filter( 'mailtpl/email_content', 'convert_chars' );
+		remove_filter( 'mailtpl/email_content', 'wpautop' );
+		remove_action('woocommerce_email_header', array($WC_Emails , 'email_header'));
+		remove_action('woocommerce_email_footer', array($WC_Emails , 'email_footer'));
+	}
 }

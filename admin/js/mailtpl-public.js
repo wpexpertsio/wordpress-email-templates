@@ -34,10 +34,35 @@
                     $( '#template_header' ).css( 'background-color', newval );
             } );
         } );
+        wp.customize( 'mailtpl_opts[header_text_size]', function( value ) {
+            value.bind( function( newval ) {
+                if( newval.length )
+                    $( '#logo' ).css( 'font-size', newval +'px' );
+            } );
+        } );
         wp.customize( 'mailtpl_opts[header_text_color]', function( value ) {
             value.bind( function( newval ) {
                 if( newval.length )
                     $( '#logo' ).css( 'color', newval );
+            } );
+        } );
+
+        wp.customize( 'mailtpl_opts[email_body_bg]', function( value ) {
+            value.bind( function( newval ) {
+                if( newval.length )
+                    $( '#mailtpl_body_bg' ).css( 'background-color', newval );
+            } );
+        } );
+        wp.customize( 'mailtpl_opts[body_text_size]', function( value ) {
+            value.bind( function( newval ) {
+                if( newval.length )
+                    $( '#mailtpl_body' ).css( 'font-size', newval +'px' );
+            } );
+        } );
+        wp.customize( 'mailtpl_opts[body_text_color]', function( value ) {
+            value.bind( function( newval ) {
+                if( newval.length )
+                    $( '#mailtpl_body' ).css( 'color', newval );
             } );
         } );
 
@@ -51,6 +76,13 @@
             value.bind( function( newval ) {
                 if( newval.length )
                     $( '#template_footer' ).css( 'background-color', newval );
+            } );
+        } );
+
+        wp.customize( 'mailtpl_opts[footer_text_size]', function( value ) {
+            value.bind( function( newval ) {
+                if( newval.length )
+                    $( '#credit' ).css( 'font-size', newval +'px' );
             } );
         } );
         wp.customize( 'mailtpl_opts[footer_text_color]', function( value ) {
