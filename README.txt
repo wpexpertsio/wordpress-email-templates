@@ -1,10 +1,10 @@
 === Email Templates ===
 Contributors: timersys
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K4T6L69EV9G2Q
-Tags: email templates, email template, html email, email template, template, better emails, wp better emails, wp email templates, html emails
+Tags: email templates, email template, html email, email template, template, better emails, wp better emails, wp email templates, html emails, wpmandrill, postman, wp smtp
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 1.1
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,17 +13,19 @@ Send beautiful emails with the WordPress Email Templates plugin
 
 Send beautiful emails with the WordPress Email Templates plugin. Choose your template style, add a logo or some text, change colors, edit footer and start sending nice emails in WordPress.
 
-Email Template plugin uses Customizer to make it easier. Preview your changes or send a test email with just a few clicks.
+Email Template plugin uses Customizer to make it easier. Preview your changes or send a test email with just a few clicks. *Requires WordPress 4.0.0*
 
-= Requires WordPress 4.0.0 =
+* Compatible with : [wpMandrill](https://wordpress.org/plugins/wpmandrill/), [Postman SMTP Mailer](https://wordpress.org/support/plugin/postman-smtp), [WP SMTP](https://wordpress.org/plugins/wp-smtp/), [Easy WP SMTP](https://wordpress.org/plugins/easy-wp-smtp/), [Easy SMTP Mail](https://wordpress.org/plugins/webriti-smtp-mail/)
 
-= Help with translations = - [https://www.transifex.com/projects/p/wp-email-templates/](https://www.transifex.com/projects/p/wp-email-templates/)
+= Help with translations =
+
+Send your translations to [Transifex](https://www.transifex.com/projects/p/wp-email-templates/)
 
 Currently Available in:
-* English
-* Spanish
-* Chinese
-* Portuguese
+- English
+- Spanish
+- Chinese
+- Portuguese
 
 = Collaborate in Github = - [https://github.com/timersys/wordpress-email-templates](https://github.com/timersys/wordpress-email-templates)
 
@@ -44,6 +46,12 @@ Thanks to @eliorivero for sharing some customizer tips for plugins :)
 3. Another example
 
 == Changelog ==
+
+= 1.1.1 =
+* Added Postman SMTP compatibility
+* Added WP SMTP compatibility
+* Added Easy WP SMTP compatibility
+* Added Easy SMTP Mail compatibility
 
 = 1.1 =
 * Fixed bug with wpmandrill
