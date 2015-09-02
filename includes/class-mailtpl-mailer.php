@@ -87,6 +87,22 @@ class Mailtpl_Mailer {
 	}
 
 	/**
+	 * Postman Compatibility
+	 *
+	 * @param $args
+	 *
+	 * @return Array
+	 *
+	 */
+	public function send_email_postman( $args ) {
+		if( !class_exists('Postman') )
+			return $args;
+		$temp_message       =  $this->add_template( apply_filters( 'mailtpl/email_content', $args['message'] ) );
+		$args['message']    =  $this->replace_placeholders( $temp_message );
+		return $args;
+	}
+
+	/**
 	 * Send a test email to admin email
 	 * @since 1.0.0
 	 */
