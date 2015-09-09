@@ -13,19 +13,19 @@ Send beautiful emails with the WordPress Email Templates plugin
 
 Send beautiful emails with the WordPress Email Templates plugin. Choose your template style, add a logo or some text, change colors, edit footer and start sending nice emails in WordPress.
 
-Email Template plugin uses Customizer to make it easier. Preview your changes or send a test email with just a few clicks. *Requires WordPress 4.0.0*
+Email Template plugin uses Customizer to make it easier. Preview your changes or send a test email with just a few clicks. **Requires WordPress 4.0.0**
 
-* Compatible with : [wpMandrill](https://wordpress.org/plugins/wpmandrill/), [Postman SMTP Mailer](https://wordpress.org/support/plugin/postman-smtp), [WP SMTP](https://wordpress.org/plugins/wp-smtp/), [Easy WP SMTP](https://wordpress.org/plugins/easy-wp-smtp/), [Easy SMTP Mail](https://wordpress.org/plugins/webriti-smtp-mail/)
+Compatible with : [wpMandrill](https://wordpress.org/plugins/wpmandrill/), [Postman SMTP Mailer](https://wordpress.org/support/plugin/postman-smtp), [WP SMTP](https://wordpress.org/plugins/wp-smtp/), [Easy WP SMTP](https://wordpress.org/plugins/easy-wp-smtp/), [Easy SMTP Mail](https://wordpress.org/plugins/webriti-smtp-mail/)
 
 = Help with translations =
 
 Send your translations to [Transifex](https://www.transifex.com/projects/p/wp-email-templates/)
 
-Currently Available in:
-- English
-- Spanish
-- Chinese
-- Portuguese
+= Currently Available in: =
+*   English
+*   Spanish
+*   Chinese
+*   Portuguese
 
 = Collaborate in Github = - [https://github.com/timersys/wordpress-email-templates](https://github.com/timersys/wordpress-email-templates)
 
