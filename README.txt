@@ -3,8 +3,8 @@ Contributors: timersys
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K4T6L69EV9G2Q
 Tags: email templates, email template, html email, email template, template, better emails, wp better emails, wp email templates, html emails, wpmandrill, postman, wp smtp
 Requires at least: 4.0
-Tested up to: 4.3
-Stable tag: 1.1.1
+Tested up to: 4.3.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,6 +26,8 @@ Send your translations to [Transifex](https://www.transifex.com/projects/p/wp-em
 *   Spanish
 *   Chinese
 *   Portuguese
+*   Dutch
+*   Persian
 
 = Collaborate in Github = - [https://github.com/timersys/wordpress-email-templates](https://github.com/timersys/wordpress-email-templates)
 
@@ -46,6 +48,10 @@ Thanks to @eliorivero for sharing some customizer tips for plugins :)
 3. Another example
 
 == Changelog ==
+
+= 1.1.2 =
+* Fixed bug with powered by still showing on some mail clients
+* Added new languages
 
 = 1.1.1 =
 * Added Postman SMTP compatibility

@@ -11,7 +11,7 @@
  * Plugin Name:       Email Templates
  * Plugin URI:        http://wordpress.org/plugins/email-templates
  * Description:       Beautify WordPress default emails
- * Version:           1.1.1
+ * Version:           1.1.2
  * Author:            Damian Logghe
  * Author URI:        https://wp.timersys.com
  * License:           GPL-2.0+
