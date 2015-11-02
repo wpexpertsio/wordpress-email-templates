@@ -275,7 +275,7 @@ class Mailtpl {
 			'footer_bg'         => '#eee',
 			'footer_text_size'  => '12',
 			'footer_text_color' => '#777',
-			'footer_powered_by' => 'on',
+			'footer_powered_by' => 'off',
 			'header_aligment'   => 'center',
 			'header_bg'         => '#454545',
 			'header_text_size'  => '30',
