@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: email templates, email template, html email, email template, template, better emails, wp better emails, wp email templates, html emails, wpmandrill, postman, wp smtp
 Requires at least: 4.0
 Tested up to: 4.3.1
-Stable tag: 1.1.2
+Stable tag: 1.1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,9 @@ Thanks to @eliorivero for sharing some customizer tips for plugins :)
 3. Another example
 
 == Changelog ==
+
+= 1.1.2.1 =
+* Remove "powered by" by default
 
 = 1.1.2 =
 * Fixed bug with powered by still showing on some mail clients
