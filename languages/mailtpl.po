@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Templates\n"
+"POT-Creation-Date: 2015-09-20 10:21-0300\n"
+"PO-Revision-Date: 2015-09-20 10:22-0300\n"
+"Last-Translator: \n"
+"Language-Team: Timersys <info@timersys.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: ../.\n"
+
+#: .././admin/class-mailtpl-admin.php:169
+#: .././includes/class-mailtpl-customizer.php:55
+msgid "Email Templates"
+msgstr ""
+
+#: .././admin/class-mailtpl-admin.php:170
+msgid "Now you can edit your email template right in the Appearance menu"
+msgstr ""
+
+#: .././admin/templates/partials/default-message.php:1
+msgid "Here you will see the email content that is normally sent in WordPress."
+msgstr ""
+
+#: .././admin/templates/partials/default-message.php:2
+msgid ""
+"The email template is responsive an fully customizable. I hope you enjoy it!"
+msgstr ""
+
+#: .././admin/templates/partials/default-message.php:3
+#, php-format
+msgid ""
+"We would like to ask you a little favour. If you are happy with the plugin "
+"and can take a minute please <a href=\"%s\" target=\"_blank\">leave a nice "
+"review</a> on WordPress. It will be a tremendous help for us!"
+msgstr ""
+
+#: .././admin/templates/partials/default-message.php:6
+msgid ""
+"You can use any of these placeholders in your emails content or templates "
+"and they will be automatically replaced"
+msgstr ""
+
+#: .././admin/test.php:25
+msgid "MyTheme Options"
+msgstr ""
+
+#: .././admin/test.php:28
+msgid "Allows you to customize some example settings for MyTheme."
+msgstr ""
+
+#: .././admin/test.php:47
+msgid "Link Color"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:56
+msgid ""
+"Within the Email Templates customizer you can change how your WordPress "
+"Emails looks. It's fully compatible with WooCommerce and Easy Digital "
+"Downloads html emails"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:62
+msgid "Settings"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:66
+msgid "Template"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:70
+msgid "Email Header"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:74
+msgid "Email Body"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:78
+msgid "Footer"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:82
+#: .././includes/class-mailtpl-customizer.php:601
+msgid "Send test email"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:179
+msgid "From name"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:183
+#: .././includes/class-mailtpl-customizer.php:201
+msgid "Default: "
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:197
+msgid "From Email"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:228
+msgid "Choose one"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:250
+#: .././includes/class-mailtpl-customizer.php:341
+#: .././includes/class-mailtpl-customizer.php:405
+#: .././includes/class-mailtpl-customizer.php:514
+msgid "Background Color"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:253
+msgid "Choose email background color"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:279
+#: .././includes/class-mailtpl-customizer.php:298
+msgid "Logo"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:283
+msgid "Add an image to use in header. Leave empty to use text instead"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:302
+msgid "Add text to your mail header"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:316
+#: .././includes/class-mailtpl-customizer.php:489
+msgid "Aligment"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:326
+msgid "Choose alignment for header"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:344
+msgid "Choose header background color"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:358
+#: .././includes/class-mailtpl-customizer.php:422
+#: .././includes/class-mailtpl-customizer.php:531
+msgid "Text size"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:362
+#: .././includes/class-mailtpl-customizer.php:426
+#: .././includes/class-mailtpl-customizer.php:535
+msgid "Slide to change text size"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:377
+#: .././includes/class-mailtpl-customizer.php:441
+#: .././includes/class-mailtpl-customizer.php:549
+msgid "Text Color"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:380
+msgid "Choose header text color"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:408
+msgid "Choose email body background color"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:444
+msgid "Choose body text color"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:470
+msgid "Footer text"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:474
+msgid "Change the email footer here"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:499
+msgid "Choose alignment for footer"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:517
+msgid "Choose footer background color"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:552
+msgid "Choose footer text color"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:567
+msgid "Powered by"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:575
+msgid "Display a tiny link to the plugin page"
+msgstr ""
+
+#: .././includes/class-mailtpl-customizer.php:605
+msgid ""
+"Save the template and then click the button to send a test email to admin "
+"email "
+msgstr ""
+
+#: .././includes/class-mailtpl-mailer.php:114
+msgid "Wp Email Templates"
+msgstr ""
+
+#: .././includes/class-mailtpl.php:80 .././includes/class-mailtpl.php:88
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: .././includes/customize-controls/class-send-mail-customize-control.php:13
+msgid "Send"
+msgstr ""
+
+#: .././includes/customize-controls/class-send-mail-customize-control.php:15
+msgid "Email sent!"
+msgstr ""
