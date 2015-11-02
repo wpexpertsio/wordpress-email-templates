@@ -24,6 +24,7 @@ Send your translations to [Transifex](https://www.transifex.com/projects/p/wp-em
 = Currently Available in: =
 *   English
 *   Spanish
+*   French
 *   Chinese
 *   Portuguese
 *   Dutch
@@ -51,6 +52,7 @@ Thanks to @eliorivero for sharing some customizer tips for plugins :)
 
 = 1.1.2.1 =
 * Remove "powered by" by default
+* Updated languages
 
 = 1.1.2 =
 * Fixed bug with powered by still showing on some mail clients
