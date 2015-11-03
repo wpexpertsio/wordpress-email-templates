@@ -67,7 +67,7 @@ class Mailtpl_Mailer {
 	 * @param object $phpmailer
 	 */
 	function send_email( &$phpmailer ) {
-
+		do_action( 'mailtpl/send_email', $phpmailer, $this );
 		$message            =  $this->add_template( apply_filters( 'mailtpl/email_content', $phpmailer->Body ) );
 		$phpmailer->AltBody =  $this->replace_placeholders( strip_tags($phpmailer->Body) );
 		$phpmailer->Body    =  $this->replace_placeholders( $message );
@@ -81,6 +81,7 @@ class Mailtpl_Mailer {
 	 * @return Array
 	 */
 	public function send_email_mandrill( $message ) {
+		do_action( 'mailtpl/send_email_mandrill', $message, $this );
 		$temp_message       =  $this->add_template( apply_filters( 'mailtpl/email_content', $message['html'] ) );
 		$message['html']    =  $this->replace_placeholders( $temp_message );
 		return $message;
@@ -97,6 +98,7 @@ class Mailtpl_Mailer {
 	public function send_email_postman( $args ) {
 		if( !class_exists('Postman') )
 			return $args;
+		do_action( 'mailtpl/send_email_postman', $args, $this );
 		$temp_message       =  $this->add_template( apply_filters( 'mailtpl/email_content', $args['message'] ) );
 		$args['message']    =  $this->replace_placeholders( $temp_message );
 		return $args;
@@ -127,6 +129,8 @@ class Mailtpl_Mailer {
 	private function add_template( $email ) {
 		if( $this->template )
 			return str_replace( '%%MAILCONTENT%%', $email, $this->template );
+
+		do_action( 'mailtpl/add_template', $email, $this );
 
 		$template_file = apply_filters( 'mailtpl/customizer_template', MAILTPL_PLUGIN_DIR . "/admin/templates/default.php");
 		ob_start();
