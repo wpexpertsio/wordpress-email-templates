@@ -196,7 +196,7 @@ class Mailtpl {
 		$this->loader->add_action( 'wp_mail_from_name', $this->mailer, 'set_from_name' );
 		$this->loader->add_action( 'wp_mail_from', $this->mailer, 'set_from_email' );
 
-		$this->loader->add_filter( 'retrieve_password_message', $this->mailer, 'clean_retrieve_password' );
+		$this->loader->add_filter( 'mailtpl/email_content', $this->mailer, 'clean_retrieve_password' );
 
 		$this->loader->add_filter( 'mailtpl/email_content', '', 'wptexturize' );
 		$this->loader->add_filter( 'mailtpl/email_content', '', 'convert_chars' );
@@ -275,7 +275,7 @@ class Mailtpl {
 			'footer_bg'         => '#eee',
 			'footer_text_size'  => '12',
 			'footer_text_color' => '#777',
-			'footer_powered_by' => 'on',
+			'footer_powered_by' => 'off',
 			'header_aligment'   => 'center',
 			'header_bg'         => '#454545',
 			'header_text_size'  => '30',
