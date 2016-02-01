@@ -191,7 +191,7 @@ class Mailtpl_Mailer {
 	 * @return mixed
 	 */
 	public function clean_retrieve_password( $message ) {
-		return preg_replace( '@<(http[^> ]+)>@', '$1', $message );
+		return make_clickable( preg_replace( '@<(http[^> ]+)>@', '$1', $message ) );
 	}
 
 }
