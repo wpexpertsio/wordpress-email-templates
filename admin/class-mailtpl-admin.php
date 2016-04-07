@@ -49,14 +49,7 @@ class Mailtpl_Admin {
 	 * Create the wp-admin menu link
 	 */
 	public function add_menu_link() {
-		$link = add_query_arg(
-			array(
-				'url'               => urlencode( site_url('/?mailtpl_display=true') ),
-				'return'            => urlencode( admin_url() ),
-				'mailtpl_display'   => 'true'
-			),
-			'customize.php'
-		);
+		$link = $this->get_customizer_link();
 		add_submenu_page( 'themes.php', 'Email Templates', 'Email Templates', apply_filters( 'mailtpl/roles', 'edit_theme_options'), $link , null );
 
 	}
@@ -212,5 +205,32 @@ class Mailtpl_Admin {
 		remove_filter( 'mailtpl/email_content', 'wpautop' );
 		remove_action('woocommerce_email_header', array($WC_Emails , 'email_header'));
 		remove_action('woocommerce_email_footer', array($WC_Emails , 'email_footer'));
+	}
+
+
+	function woocommerce_preview_link( $settings ) {
+		for( $i = 0; $i < sizeof( $settings ); $i++ ) {
+			if( isset( $settings[ $i ]['id'] ) && 'email_template_options' == $settings[ $i ]['id'] ) {
+				$settings[ $i ]['desc'] = sprintf(__( 'This section lets you customize the WooCommerce emails. <a href="%s" target="_blank">Click here to preview your email template</a>.', 'woocommerce' ), $this->get_customizer_link() );
+			}
+		}
+		return $settings;
+	}
+
+	/**
+	 * Simple function to generate link for customizer
+	 * @return string
+	 */
+	private function get_customizer_link() {
+		$link = add_query_arg(
+			array(
+				'url'             => urlencode( site_url( '/?mailtpl_display=true' ) ),
+				'return'          => urlencode( admin_url() ),
+				'mailtpl_display' => 'true'
+			),
+			'customize.php'
+		);
+
+		return $link;
 	}
 }
