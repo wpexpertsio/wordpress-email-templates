@@ -183,7 +183,7 @@ class Mailtpl {
 		$this->loader->add_filter( 'woocommerce_email_settings', $this->admin, 'woocommerce_preview_link' );
 		
 		// only show in customizer if being acceded by our menu link 
-		if( isset( $_GET['mailtpl_display'] ) && 'true' == $_GET['mailtpl_display'] ) {
+		if( defined( 'DOING_AJAX' ) || ( isset( $_GET['mailtpl_display'] ) && 'true' == $_GET['mailtpl_display'] ) ) {
 			$this->loader->add_action( 'customize_register', $this->customizer, 'register_customize_sections' );
 			$this->loader->add_action( 'customize_section_active', $this->customizer, 'remove_other_sections', 10, 2 );
 			$this->loader->add_action( 'customize_panel_active', $this->customizer, 'remove_other_panels', 10, 2 );
