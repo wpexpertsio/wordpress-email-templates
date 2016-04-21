@@ -228,7 +228,7 @@ class Mailtpl_Customizer {
 	 * @param $wp_customize WP_Customize_Manager
 	 */
 	private function template_section($wp_customize) {
-
+		require_once MAILTPL_PLUGIN_DIR . '/includes/customize-controls/class-font-size-customize-control.php';
 		do_action('mailtpl/sections/template/before_content', $wp_customize);
 
 		$wp_customize->add_setting( 'mailtpl_opts[template]', array(
@@ -252,7 +252,24 @@ class Mailtpl_Customizer {
 				'description'   => ''
 			)
 		) );
-
+		// body size
+		$wp_customize->add_setting( 'mailtpl_opts[body_size]', array(
+			'type'                  => 'option',
+			'default'               => $this->defaults['body_size'],
+			'transport'             => 'postMessage',
+			'capability'            => 'edit_theme_options',
+			'sanitize_callback'     => array( $this,'sanitize_text'),
+			'sanitize_js_callback'  => '',
+		) );
+		$wp_customize->add_control( new WP_Font_Size_Customize_Control( $wp_customize,
+			'mailtpl_body_size', array(
+				'label'         => __( 'Email body size', $this->plugin_name ),
+				'section'       => 'section_mailtpl_template',
+				'settings'      => 'mailtpl_opts[body_size]',
+				'description'   => __( 'Choose boxed size', $this->plugin_name )
+			)
+		) );
+		// body bg
 		$wp_customize->add_setting( 'mailtpl_opts[body_bg]', array(
 			'type'                  => 'option',
 			'default'               => $this->defaults['body_bg'],

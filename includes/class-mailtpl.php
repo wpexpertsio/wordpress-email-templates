@@ -275,6 +275,7 @@ class Mailtpl {
 			'from_email'        => get_bloginfo('admin_email'),
 			'template'          => 'boxed',
 			'body_bg'           => '#e3e3e3',
+			'body_size'         => '680',
 			'footer_text'       => '&copy;'.date('Y').' ' .get_bloginfo('name'),
 			'footer_aligment'   => 'center',
 			'footer_bg'         => '#eee',
