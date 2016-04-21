@@ -186,6 +186,7 @@ class Mailtpl {
 		if( isset( $_GET['mailtpl_display'] ) && 'true' == $_GET['mailtpl_display'] ) {
 			$this->loader->add_action( 'customize_register', $this->customizer, 'register_customize_sections' );
 			$this->loader->add_action( 'customize_section_active', $this->customizer, 'remove_other_sections', 10, 2 );
+			$this->loader->add_action( 'customize_panel_active', $this->customizer, 'remove_other_panels', 10, 2 );
 			$this->loader->add_action( 'template_include', $this->customizer, 'capture_customizer_page' );
 		}
 

@@ -95,7 +95,7 @@ class Mailtpl_Customizer {
 	}
 
 	/**
-	 * Remover other panels and sections
+	 * Remover other sections
 	 * @param $active
 	 * @param $section
 	 *
@@ -123,6 +123,22 @@ class Mailtpl_Customizer {
 		return true;
 	}
 
+	/**
+	 * Remover other panels
+	 * @param $active
+	 * @param $panel
+	 *
+	 * @return bool
+	 */
+	public function remove_other_panels( $active, $panel ){
+		if ( isset( $_GET['mailtpl_display'] ) ) {
+			if ( 'mailtpl' == $panel->id ) {
+				return true;
+			}
+			return false;
+		}
+		return true;
+	}
 	/**
 	 * Here we capture the page and show template acordingly
 	 * @param $template
