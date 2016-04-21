@@ -76,7 +76,7 @@ $header_content_h1_a = "
         	<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
             	<tr>
                 	<td align="center" valign="top">
-                    	<table border="0" cellpadding="0" cellspacing="0" width="<?php echo $settings['template'] == 'boxed' ? '680px' : '100%';?>" id="template_container" style="<?php echo $template_container; ?>">
+                    	<table border="0" cellpadding="0" cellspacing="0" width="<?php echo $settings['template'] == 'boxed' ? $settings['body_size'] : '100%';?>" id="template_container" style="<?php echo $template_container; ?>">
                         	<tr>
                             	<td align="center" valign="top">
                                     <!-- Header -->
@@ -86,7 +86,7 @@ $header_content_h1_a = "
                                             	<h1 style="<?php echo $header_content_h1; ?>" id="logo">
 		                                            <a style="<?php echo $header_content_h1_a;?>" href="<?php echo apply_filters( 'mailtpl/templates/header_logo_url', home_url());?>" title="<?php echo apply_filters( 'mailtpl/templates/header_logo_url_title', get_bloginfo('name') );?>"><?php
 		                                            if( !empty($settings['header_logo']) ) {
-			                                            echo '<img src="'.apply_filters( 'mailtpl/templates/header_logo', $settings['header_logo'] ).'" alt="logo"/>';
+			                                            echo '<img src="'.apply_filters( 'mailtpl/templates/header_logo', $settings['header_logo'] ).'" alt="'. apply_filters( 'mailtpl/templates/header_logo_alt', get_bloginfo( 'description' ) ) .'"/>';
 		                                            } elseif ( !empty( $settings['header_logo_text'] ) ) {
 														echo $settings['header_logo_text'];
 		                                            } else {

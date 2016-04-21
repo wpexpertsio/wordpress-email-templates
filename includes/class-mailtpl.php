@@ -180,10 +180,15 @@ class Mailtpl {
 		$this->loader->add_filter( 'edd_email_templates', $this->admin, 'add_edd_template' );
 		$this->loader->add_action( 'edd_email_send_before', $this->admin, 'edd_get_template' );
 		$this->loader->add_action( 'woocommerce_email', $this->admin, 'woocommerce_integration' );
-
-		$this->loader->add_action( 'customize_register', $this->customizer, 'register_customize_sections' );
-		$this->loader->add_action( 'customize_section_active', $this->customizer, 'remove_other_sections', 10, 2 );
-		$this->loader->add_action( 'template_include', $this->customizer, 'capture_customizer_page' );
+		$this->loader->add_filter( 'woocommerce_email_settings', $this->admin, 'woocommerce_preview_link' );
+		
+		// only show in customizer if being acceded by our menu link 
+		if( defined( 'DOING_AJAX' ) || ( isset( $_GET['mailtpl_display'] ) && 'true' == $_GET['mailtpl_display'] ) ) {
+			$this->loader->add_action( 'customize_register', $this->customizer, 'register_customize_sections' );
+			$this->loader->add_action( 'customize_section_active', $this->customizer, 'remove_other_sections', 10, 2 );
+			$this->loader->add_action( 'customize_panel_active', $this->customizer, 'remove_other_panels', 10, 2 );
+			$this->loader->add_action( 'template_include', $this->customizer, 'capture_customizer_page' );
+		}
 
 		$this->loader->add_action( 'phpmailer_init', $this->mailer, 'send_email' );
 		$this->loader->add_filter( 'mandrill_payload', $this->mailer, 'send_email_mandrill' );
@@ -270,6 +275,7 @@ class Mailtpl {
 			'from_email'        => get_bloginfo('admin_email'),
 			'template'          => 'boxed',
 			'body_bg'           => '#e3e3e3',
+			'body_size'         => '680',
 			'footer_text'       => '&copy;'.date('Y').' ' .get_bloginfo('name'),
 			'footer_aligment'   => 'center',
 			'footer_bg'         => '#eee',

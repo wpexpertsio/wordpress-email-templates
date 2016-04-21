@@ -7,6 +7,13 @@
                     $( '#body' ).css( 'background-color', newval );
             } );
         } );
+
+        wp.customize( 'mailtpl_opts[body_size]', function( value ) {
+            value.bind( function( newval ) {
+                if( newval.length )
+                    $( '#template_container' ).css( 'width', newval + 'px' );
+            } );
+        } );
         wp.customize( 'mailtpl_opts[header_logo]', function( value ) {
             value.bind( function( newval ) {
                 if( newval.length ) {

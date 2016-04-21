@@ -19,6 +19,16 @@
                 $('#mailtpl-success').fadeIn().delay(3000).fadeOut();
             });
         });
+        if( $('#customize-control-mailtpl_template select').val() != 'boxed' ) {
+            $('#customize-control-mailtpl_body_size').hide();
+        }
+        $('#customize-control-mailtpl_template select').on('change', function () {
+            if( $(this).val() == 'boxed' ) {
+                $('#customize-control-mailtpl_body_size').fadeIn();
+            } else {
+                $('#customize-control-mailtpl_body_size').fadeOut();
+            }
+        });
     });
 
 })( jQuery );
