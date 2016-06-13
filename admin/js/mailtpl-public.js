@@ -50,7 +50,7 @@
         wp.customize( 'mailtpl_opts[header_text_color]', function( value ) {
             value.bind( function( newval ) {
                 if( newval.length )
-                    $( '#logo' ).css( 'color', newval );
+                    $( '#logo a' ).css( 'color', newval );
             } );
         } );
 
