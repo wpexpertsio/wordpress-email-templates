@@ -181,8 +181,8 @@ class Mailtpl {
 		$this->loader->add_action( 'edd_email_send_before', $this->admin, 'edd_get_template' );
 		$this->loader->add_action( 'woocommerce_email', $this->admin, 'woocommerce_integration' );
 		$this->loader->add_filter( 'woocommerce_email_settings', $this->admin, 'woocommerce_preview_link' );
-		
-		// only show in customizer if being acceded by our menu link 
+
+		// only show in customizer if being acceded by our menu link
 		if( defined( 'DOING_AJAX' ) || ( isset( $_GET['mailtpl_display'] ) && 'true' == $_GET['mailtpl_display'] ) ) {
 			$this->loader->add_action( 'customize_register', $this->customizer, 'register_customize_sections' );
 			$this->loader->add_action( 'customize_section_active', $this->customizer, 'remove_other_sections', 10, 2 );
@@ -190,16 +190,15 @@ class Mailtpl {
 			$this->loader->add_action( 'template_include', $this->customizer, 'capture_customizer_page' );
 		}
 
-		$this->loader->add_action( 'phpmailer_init', $this->mailer, 'send_email' );
-		$this->loader->add_filter( 'mandrill_payload', $this->mailer, 'send_email_mandrill' );
-
+		$this->loader->add_action( 'phpmailer_init', $this->mailer, 'send_email', 50 );
+		$this->loader->add_filter( 'mandrill_payload', $this->mailer, 'send_email_generic' );
+		$this->loader->add_filter( 'mg_mutate_message_body', $this->mailer, 'send_email_generic' );
 		$this->loader->add_filter( 'wp_mail', $this->mailer, 'send_email_postman' );
 
-		$this->loader->add_action( 'mandrill_payload', $this->mailer, 'send_email_mandrill' );
 		$this->loader->add_action( 'wp_ajax_mailtpl_send_email', $this->mailer, 'send_test_email' );
 		$this->loader->add_action( 'wp_mail_content_type', $this->mailer, 'set_content_type', 100 );
 		$this->loader->add_action( 'wp_mail_from_name', $this->mailer, 'set_from_name' );
-		$this->loader->add_action( 'wp_mail_from', $this->mailer, 'set_from_email' );
+		$this->loader->add_action( 'wp_mail_from', $this->mailer, 'set_from_email');
 
 		$this->loader->add_filter( 'mailtpl/email_content', $this->mailer, 'clean_retrieve_password' );
 
