@@ -211,7 +211,7 @@ class Mailtpl {
 			$this->loader->add_action( 'customize_controls_enqueue_scripts', $this->customizer, 'enqueue_scripts' );
 			$this->loader->add_action( 'customize_preview_init', $this->customizer, 'enqueue_template_scripts', 99 );
 
-			$this->loader->add_action( 'init', $this->admin, 'remove_all_actions', 99 );
+			$this->loader->add_action( 'init', $this->admin, 'remove_all_actions', 999 );
 		}
 	}
 
@@ -289,6 +289,8 @@ class Mailtpl {
 			'email_body_bg'     => '#fafafa',
 			'body_text_size'    => '14',
 			'body_text_color'   => '#888',
+			'body_href_color'   => '#4ca6cf',
+			'custom_css'        => '',
 		));
 	}
 }

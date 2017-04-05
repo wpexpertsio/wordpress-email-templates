@@ -286,6 +286,24 @@ class Mailtpl_Customizer {
 				'description'   => __( 'Choose email background color', $this->plugin_name )
 			)
 		) );
+		// custom css
+		$wp_customize->add_setting( 'mailtpl_opts[custom_css]', array(
+			'type'                  => 'option',
+			'default'               => $this->defaults['custom_css'],
+			'transport'             => 'refresh',
+			'capability'            => 'edit_theme_options',
+			'sanitize_callback'     => 'wp_filter_nohtml_kses',
+			'sanitize_js_callback'  => 'wp_filter_nohtml_kses',
+		) );
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
+			'mailtpl_custom_css', array(
+				'label'     => __( 'Custom css', $this->plugin_name ),
+				'type'      => 'textarea',
+				'section'   => 'section_mailtpl_template',
+				'settings'  => 'mailtpl_opts[custom_css]',
+				'description'   => __('Add custom css. Be aware that this may not work on all email clients.', $this->plugin_name )
+			)
+		) );
 		do_action('mailtpl/sections/template/after_content', $wp_customize);
 	}
 
@@ -475,6 +493,23 @@ class Mailtpl_Customizer {
 				'section'       => 'section_mailtpl_body',
 				'settings'      => 'mailtpl_opts[body_text_color]',
 				'description'   => __( 'Choose body text color', $this->plugin_name )
+			)
+		) );
+		// Links color
+		$wp_customize->add_setting( 'mailtpl_opts[body_href_color]', array(
+			'type'                  => 'option',
+			'default'               => $this->defaults['body_href_color'],
+			'transport'             => 'postMessage',
+			'capability'            => 'edit_theme_options',
+			'sanitize_callback'     => 'sanitize_hex_color',
+			'sanitize_js_callback'  => '',
+		) );
+		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
+			'mailtpl_body_href_color', array(
+				'label'         => __( 'Links Color', $this->plugin_name ),
+				'section'       => 'section_mailtpl_body',
+				'settings'      => 'mailtpl_opts[body_href_color]',
+				'description'   => __( 'Choose links color', $this->plugin_name )
 			)
 		) );
 		do_action('mailtpl/sections/body/after_content', $wp_customize);

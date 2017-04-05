@@ -14,6 +14,12 @@
                     $( '#template_container' ).css( 'width', newval + 'px' );
             } );
         } );
+        wp.customize( 'mailtpl_opts[custom_css]', function( value ) {
+            value.bind( function( newval ) {
+                if( newval.length )
+                    $( '#custom-css' ).html( newval );
+            } );
+        } );
         wp.customize( 'mailtpl_opts[header_logo]', function( value ) {
             value.bind( function( newval ) {
                 if( newval.length ) {
@@ -72,7 +78,12 @@
                     $( '#mailtpl_body' ).css( 'color', newval );
             } );
         } );
-
+        wp.customize( 'mailtpl_opts[body_href_color]', function( value ) {
+            value.bind( function( newval ) {
+                if( newval.length )
+                    $( '#template_body a' ).css( 'color', newval );
+            } );
+        } );
         wp.customize( 'mailtpl_opts[footer_aligment]', function( value ) {
             value.bind( function( newval ) {
                 if( newval.length )

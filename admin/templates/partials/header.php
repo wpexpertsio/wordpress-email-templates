@@ -65,11 +65,18 @@ $header_content_h1_a = "
 	text-decoration: none;
 ";
 ?>
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=<?php echo get_bloginfo('charset');?>" />
         <title><?php echo get_bloginfo('name'); ?></title>
+	    <style type="text/css">
+		    #template_body a{
+			    color: <?= $settings['body_href_color'];?>;
+		    }
+	    </style>
+	    <style type="text/css" id="custom-css">
+		    <?= $settings['custom_css'];?>
+	    </style>
 	</head>
     <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
     	<div id="body" style="<?php echo $wrapper; ?>">
