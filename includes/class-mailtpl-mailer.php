@@ -88,6 +88,20 @@ class Mailtpl_Mailer {
 	}
 
 	/**
+	 * Generic Compatibility functions used for Mandrill,Mailgun, etc
+	 * @param $message Array
+	 *
+	 * @return Array
+	 */
+	public function send_email_sendgrid( $message ) {
+		do_action( 'mailtpl/send_email_sendgrid', $message, $this );
+		$temp_message       =  $this->add_template( apply_filters( 'mailtpl/email_content', $message ) );
+		$message    =  $this->replace_placeholders( $temp_message, $message );
+		error_log("debug-log:".print_r($message,1));
+		return $message;
+	}
+
+	/**
 	 * Postman Compatibility
 	 *
 	 * @param $args
