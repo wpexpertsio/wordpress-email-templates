@@ -65,11 +65,18 @@ $header_content_h1_a = "
 	text-decoration: none;
 ";
 ?>
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=<?php echo get_bloginfo('charset');?>" />
         <title><?php echo get_bloginfo('name'); ?></title>
+	    <style type="text/css">
+		    #template_body a{
+			    color: <?= $settings['body_href_color'];?>;
+		    }
+	    </style>
+	    <style type="text/css" id="custom-css">
+		    <?= $settings['custom_css'];?>
+	    </style>
 	</head>
     <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
     	<div id="body" style="<?php echo $wrapper; ?>">
@@ -84,11 +91,11 @@ $header_content_h1_a = "
                                         <tr>
                                             <td>
                                             	<h1 style="<?php echo $header_content_h1; ?>" id="logo">
-		                                            <a style="<?php echo $header_content_h1_a;?>" href="<?php echo apply_filters( 'mailtpl/templates/header_logo_url', home_url());?>" title="<?php echo apply_filters( 'mailtpl/templates/header_logo_url_title', get_bloginfo('name') );?>"><?php
+		                                            <a style="<?php echo $header_content_h1_a;?>" href="<?php echo apply_filters( 'mailtpl/templates/header_logo_url', home_url());?>" title="<?php echo apply_filters( 'mailtpl/templates/header_logo_url_title', !empty($settings['header_logo_text']) ? do_shortcode( $settings['header_logo_text'] ) : get_bloginfo('name') );?>"><?php
 		                                            if( !empty($settings['header_logo']) ) {
-			                                            echo '<img src="'.apply_filters( 'mailtpl/templates/header_logo', $settings['header_logo'] ).'" alt="'. apply_filters( 'mailtpl/templates/header_logo_alt', get_bloginfo( 'description' ) ) .'"/>';
+			                                            echo '<img style="max-width:100%;" src="'.apply_filters( 'mailtpl/templates/header_logo', $settings['header_logo'] ).'" alt="'. apply_filters( 'mailtpl/templates/header_logo_alt', !empty($settings['header_logo_text']) ? do_shortcode( $settings['header_logo_text'] ) : get_bloginfo( 'description' ) ) .'"/>';
 		                                            } elseif ( !empty( $settings['header_logo_text'] ) ) {
-														echo $settings['header_logo_text'];
+														echo do_shortcode($settings['header_logo_text']);
 		                                            } else {
 														echo get_bloginfo('name');
 		                                            }  ?>

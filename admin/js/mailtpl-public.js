@@ -14,6 +14,12 @@
                     $( '#template_container' ).css( 'width', newval + 'px' );
             } );
         } );
+        wp.customize( 'mailtpl_opts[custom_css]', function( value ) {
+            value.bind( function( newval ) {
+                if( newval.length )
+                    $( '#custom-css' ).html( newval );
+            } );
+        } );
         wp.customize( 'mailtpl_opts[header_logo]', function( value ) {
             value.bind( function( newval ) {
                 if( newval.length ) {
@@ -25,8 +31,10 @@
         } );
         wp.customize( 'mailtpl_opts[header_logo_text]', function( value ) {
             value.bind( function( newval ) {
-                if( newval.length )
+                if( newval.length && ! $('#logo img').length )
                     $( '#logo a' ).text( newval );
+                if( newval.length && $('#logo img').length )
+                    $( '#logo img' ).prop('alt', newval );
             } );
         } );
         wp.customize( 'mailtpl_opts[header_aligment]', function( value ) {
@@ -43,14 +51,14 @@
         } );
         wp.customize( 'mailtpl_opts[header_text_size]', function( value ) {
             value.bind( function( newval ) {
-                if( newval.length )
+                if( newval.length  )
                     $( '#logo' ).css( 'font-size', newval +'px' );
             } );
         } );
         wp.customize( 'mailtpl_opts[header_text_color]', function( value ) {
             value.bind( function( newval ) {
                 if( newval.length )
-                    $( '#logo' ).css( 'color', newval );
+                    $( '#logo a' ).css( 'color', newval );
             } );
         } );
 
@@ -72,7 +80,12 @@
                     $( '#mailtpl_body' ).css( 'color', newval );
             } );
         } );
-
+        wp.customize( 'mailtpl_opts[body_href_color]', function( value ) {
+            value.bind( function( newval ) {
+                if( newval.length )
+                    $( '#template_body a' ).css( 'color', newval );
+            } );
+        } );
         wp.customize( 'mailtpl_opts[footer_aligment]', function( value ) {
             value.bind( function( newval ) {
                 if( newval.length )

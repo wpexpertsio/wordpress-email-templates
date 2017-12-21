@@ -3,8 +3,8 @@ Contributors: timersys
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K4T6L69EV9G2Q
 Tags: email templates, email template, html email, email template, template, better emails, wp better emails, wp email templates, html emails, wpmandrill, postman, wp smtp, woocommerce, easy digital downloads
 Requires at least: 4.0
-Tested up to: 4.5
-Stable tag: 1.1.4
+Tested up to: 4.9.1
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,7 +15,7 @@ Send beautiful emails with the WordPress Email Templates plugin. Choose your tem
 
 Email Template plugin uses Customizer to make it easier. Preview your changes or send a test email with just a few clicks. **Requires WordPress 4.0.0**
 
-Compatible with : [wpMandrill](https://wordpress.org/plugins/wpmandrill/), [Postman SMTP Mailer](https://wordpress.org/support/plugin/postman-smtp), [WP SMTP](https://wordpress.org/plugins/wp-smtp/), [Easy WP SMTP](https://wordpress.org/plugins/easy-wp-smtp/), [Easy SMTP Mail](https://wordpress.org/plugins/webriti-smtp-mail/)
+Compatible with : [wpMandrill](https://wordpress.org/plugins/wpmandrill/), [Post SMTP](https://wordpress.org/plugins/post-smtp/), [WP SMTP](https://wordpress.org/plugins/wp-smtp/), [Easy WP SMTP](https://wordpress.org/plugins/easy-wp-smtp/), [Easy SMTP Mail](https://wordpress.org/plugins/webriti-smtp-mail/), [Mailgun](https://wordpress.org/plugins/mailgun/), [Sengrid](https://wordpress.org/plugins/sendgrid-email-delivery-simplified/)
 
 = Help with translations =
 
@@ -29,6 +29,8 @@ Send your translations to [Transifex](https://www.transifex.com/projects/p/wp-em
 *   Portuguese
 *   Dutch
 *   Persian
+*   Russian
+*   German
 
 = Collaborate in Github = - [https://github.com/timersys/wordpress-email-templates](https://github.com/timersys/wordpress-email-templates)
 
@@ -42,6 +44,16 @@ Thanks to @eliorivero for sharing some customizer tips for plugins :)
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Click on Appearance -> "Email Templates" to start editing
 
+== Frequently Asked Questions ==
+
+= How to add a custom template? =
+
+Copy the templates folder into your theme , then in functions.php add the following:
+
+`add_filter(‘mailtpl/customizer_template’, function(){
+    return get_stylesheet_directory() . “/admin/templates/default.php”;
+});`
+
 == Screenshots ==
 
 1. Editing a template
@@ -49,6 +61,17 @@ Thanks to @eliorivero for sharing some customizer tips for plugins :)
 3. Another example
 
 == Changelog ==
+
+= 1.2.1 =
+* Added shortcode support in header/footer
+* Header text now it's used for alt image when using images
+* Fixed bug where image was not responsive on mobile devices
+
+= 1.2 =
+* Added custom css support on template section
+* Added link color in body section
+* Updated templates with changes above
+* Mailgun / sengrid integration
 
 = 1.1.4 =
 

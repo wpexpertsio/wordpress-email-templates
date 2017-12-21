@@ -50,7 +50,7 @@ $credit = "
                             <tr>
                                 <td colspan="2" valign="middle" id="credit" style="<?php echo $credit; ?>">
                                 
-                                	<?php echo apply_filters( 'mailtpl/templates/footer_text', $settings['footer_text'] ); ?>
+                                	<?php echo apply_filters( 'mailtpl/templates/footer_text', do_shortcode($settings['footer_text'] )); ?>
                                 </td>
                             </tr>
                         </table>
