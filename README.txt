@@ -15,7 +15,7 @@ Send beautiful emails with the WordPress Email Templates plugin. Choose your tem
 
 Email Template plugin uses Customizer to make it easier. Preview your changes or send a test email with just a few clicks. **Requires WordPress 4.0.0**
 
-Compatible with : [wpMandrill](https://wordpress.org/plugins/wpmandrill/), [Postman SMTP Mailer](https://wordpress.org/support/plugin/postman-smtp), [WP SMTP](https://wordpress.org/plugins/wp-smtp/), [Easy WP SMTP](https://wordpress.org/plugins/easy-wp-smtp/), [Easy SMTP Mail](https://wordpress.org/plugins/webriti-smtp-mail/), [Mailgun](https://wordpress.org/plugins/mailgun/), [Sengrid](https://wordpress.org/plugins/sendgrid-email-delivery-simplified/)
+Compatible with : [wpMandrill](https://wordpress.org/plugins/wpmandrill/), [Post SMTP](https://wordpress.org/plugins/post-smtp/), [WP SMTP](https://wordpress.org/plugins/wp-smtp/), [Easy WP SMTP](https://wordpress.org/plugins/easy-wp-smtp/), [Easy SMTP Mail](https://wordpress.org/plugins/webriti-smtp-mail/), [Mailgun](https://wordpress.org/plugins/mailgun/), [Sengrid](https://wordpress.org/plugins/sendgrid-email-delivery-simplified/)
 
 = Help with translations =
 
@@ -43,6 +43,16 @@ Thanks to @eliorivero for sharing some customizer tips for plugins :)
 1. Upload the plugin in /wp-admin/plugin-install.php
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Click on Appearance -> "Email Templates" to start editing
+
+== Frequently Asked Questions ==
+
+= How to add a custom template? =
+
+Copy the templates folder into your theme , then in functions.php add the following:
+
+`add_filter(‘mailtpl/customizer_template’, function(){
+    return get_stylesheet_directory() . “/admin/templates/default.php”;
+});`
 
 == Screenshots ==
 
