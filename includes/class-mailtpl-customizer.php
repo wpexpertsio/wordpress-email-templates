@@ -350,7 +350,7 @@ class Mailtpl_Customizer {
 				'type'          => 'textarea',
 				'section'       => 'section_mailtpl_header',
 				'settings'      => 'mailtpl_opts[header_logo_text]',
-				'description'   => __( 'Add text to your mail header', $this->plugin_name )
+				'description'   => __( 'Add text to your mail header. Used for alt text when Image it\'s used', $this->plugin_name )
 			)
 		) );
 		// header alignment

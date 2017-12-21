@@ -31,8 +31,10 @@
         } );
         wp.customize( 'mailtpl_opts[header_logo_text]', function( value ) {
             value.bind( function( newval ) {
-                if( newval.length )
+                if( newval.length && ! $('#logo img').length )
                     $( '#logo a' ).text( newval );
+                if( newval.length && $('#logo img').length )
+                    $( '#logo img' ).prop('alt', newval );
             } );
         } );
         wp.customize( 'mailtpl_opts[header_aligment]', function( value ) {
@@ -49,7 +51,7 @@
         } );
         wp.customize( 'mailtpl_opts[header_text_size]', function( value ) {
             value.bind( function( newval ) {
-                if( newval.length )
+                if( newval.length  )
                     $( '#logo' ).css( 'font-size', newval +'px' );
             } );
         } );
