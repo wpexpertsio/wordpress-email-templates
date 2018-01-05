@@ -23,7 +23,7 @@
         wp.customize( 'mailtpl_opts[header_logo]', function( value ) {
             value.bind( function( newval ) {
                 if( newval.length ) {
-                    $( '#logo a' ).html( '<img src="'+newval+'" alt="logo"/>' );
+                    $( '#logo a' ).html( '<img src="'+newval+'" alt="logo" class="mailtpl_img"/>' );
                 } else {
                     $( '#logo a' ).html( '' );
                 }
@@ -31,8 +31,8 @@
         } );
         wp.customize( 'mailtpl_opts[header_logo_text]', function( value ) {
             value.bind( function( newval ) {
-                if( newval.length && ! $('#logo img').length )
-                    $( '#logo a' ).text( newval );
+                if( newval.length && ! $('#logo img.mailtpl_img').length )
+                    $( '#logo a' ).html( newval );
                 if( newval.length && $('#logo img').length )
                     $( '#logo img' ).prop('alt', newval );
             } );
