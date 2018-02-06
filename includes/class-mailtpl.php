@@ -207,6 +207,8 @@ class Mailtpl {
 		$this->loader->add_filter( 'mailtpl/email_content', '', 'convert_chars' );
 		$this->loader->add_filter( 'mailtpl/email_content', '', 'wpautop' );
 
+		$this->loader->add_filter('gform_html_message_template_pre_send_email',$this->mailer, 'gform_template');
+
 		if( isset( $_GET['mailtpl_display'] ) ) {
 			$this->loader->add_action( 'customize_controls_enqueue_scripts', $this->customizer, 'enqueue_scripts' );
 			$this->loader->add_action( 'customize_preview_init', $this->customizer, 'enqueue_template_scripts', 99 );
