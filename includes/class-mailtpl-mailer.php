@@ -216,4 +216,12 @@ class Mailtpl_Mailer {
 		return make_clickable( preg_replace( '@<(http[^> ]+)>@', '$1', $message ) );
 	}
 
+	/**
+	 * This way we fully removed html added by gravity forms. Only possible on versions  2.2.1.5 or above
+	 * @since 1.2.2
+	 * @return string
+	 */
+	public function gform_template(){
+		return '{message}';
+	}
 }
