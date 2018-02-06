@@ -3,8 +3,8 @@ Contributors: timersys
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K4T6L69EV9G2Q
 Tags: email templates, email template, html email, email template, template, better emails, wp better emails, wp email templates, html emails, wpmandrill, postman, wp smtp, woocommerce, easy digital downloads
 Requires at least: 4.0
-Tested up to: 4.9.1
-Stable tag: 1.2.1
+Tested up to: 4.9.4
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,10 @@ Copy the templates folder into your theme , then in functions.php add the follow
 3. Another example
 
 == Changelog ==
+
+= 1.2.2 =
+* Added image support in header text
+* Fixed issue with spaces on gravity forms ( gravity plugin needs to be >= 2.2.1.5 )
 
 = 1.2.1 =
 * Added shortcode support in header/footer
