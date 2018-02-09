@@ -25,7 +25,7 @@ $template_container = "
 	border-radius:$border_radius !important;
 	background-color: #fafafa;
 	border-radius:6px !important;
-";
+	max-width: ". $settings['template'] == 'boxed' ? $settings['body_size'] : '100%';
 $template_header = "
 	background-color: ".$settings['header_bg'].";
 	color: #f1f1f1;
@@ -83,7 +83,7 @@ $header_content_h1_a = "
         	<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
             	<tr>
                 	<td align="center" valign="top">
-                    	<table border="0" cellpadding="0" cellspacing="0" width="<?php echo $settings['template'] == 'boxed' ? $settings['body_size'] : '100%';?>" id="template_container" style="<?php echo $template_container; ?>">
+                    	<table border="0" cellpadding="0" cellspacing="0"  id="template_container" style="<?php echo $template_container; ?>">
                         	<tr>
                             	<td align="center" valign="top">
                                     <!-- Header -->
