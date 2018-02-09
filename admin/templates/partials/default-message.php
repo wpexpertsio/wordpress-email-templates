@@ -12,4 +12,5 @@
 	<li>%%ADMIN_EMAIL%%</li>
 	<li>%%DATE%%</li>
 	<li>%%TIME%%</li>
+	<li>%%USER_EMAIL%% (not on sendgrid)</li>
 </ul>
