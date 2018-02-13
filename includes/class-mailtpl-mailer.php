@@ -181,8 +181,11 @@ class Mailtpl_Mailer {
 		), $user_email);
 
 		foreach ( $to_replace as $placeholder => $var ) {
-			if( is_array($var) )
-				$var = reset($var);
+			if( is_array($var) ){
+				do{
+					$var = reset($var);
+				} while( is_array($var) );
+			}
 			$email = str_replace( $placeholder , $var, $email );
 		}
 
