@@ -130,7 +130,7 @@ class Mailtpl_Mailer {
 		include_once( MAILTPL_PLUGIN_DIR . '/admin/templates/partials/default-message.php');
 		$message = ob_get_contents();
 		ob_end_clean();
-		$subject = __( 'Wp Email Templates', $this->plugin_name);
+		$subject = __( 'Wp Email Templates', 'email-templates');
 
 		echo wp_mail( get_bloginfo('admin_email'), $subject, $message);
 
