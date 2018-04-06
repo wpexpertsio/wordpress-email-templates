@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: email templates, email template, html email, email template, template, better emails, wp better emails, wp email templates, html emails, wpmandrill, postman, wp smtp, woocommerce, easy digital downloads
 Requires at least: 4.0
 Tested up to: 4.9.4
-Stable tag: 1.2.2
+Stable tag: 1.2.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,9 @@ Copy the templates folder into your theme , then in functions.php add the follow
 3. Another example
 
 == Changelog ==
+
+= 1.2.2.1 =
+* Text domain update
 
 = 1.2.2 =
 * Added image support in header text
