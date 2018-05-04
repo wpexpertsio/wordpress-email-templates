@@ -11,7 +11,7 @@
         wp.customize( 'mailtpl_opts[body_size]', function( value ) {
             value.bind( function( newval ) {
                 if( newval.length )
-                    $( '#template_container' ).css( 'width', newval + 'px' );
+                    $( '#template_container' ).css( 'max-width', newval + 'px' );
             } );
         } );
         wp.customize( 'mailtpl_opts[custom_css]', function( value ) {
