@@ -159,8 +159,8 @@ class Mailtpl_Admin {
 			'target' => '#menu-appearance',
 			'options' => array(
 				'content' => sprintf( '<h3> %s </h3> <p> %s </p>',
-					__( 'Email Templates', $this->plugin_name),
-					__( 'Now you can edit your email template right in the Appearance menu', $this->plugin_name)
+					__( 'Email Templates', 'email-templates'),
+					__( 'Now you can edit your email template right in the Appearance menu', 'email-templates')
 				),
 				'position' => array( 'edge' => 'top', 'align' => 'middle' )
 			)

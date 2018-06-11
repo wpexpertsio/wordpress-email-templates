@@ -52,34 +52,34 @@ class Mailtpl_Customizer {
 	public function register_customize_sections( $wp_customize ){
 
 		$wp_customize->add_panel( 'mailtpl', array(
-			'title'         => __( 'Email Templates', $this->plugin_name ),
-			'description'   => __( 'Within the Email Templates customizer you can change how your WordPress Emails looks. It\'s fully compatible with WooCommerce and Easy Digital Downloads html emails', $this->plugin_name ),
+			'title'         => __( 'Email Templates', 'email-templates' ),
+			'description'   => __( 'Within the Email Templates customizer you can change how your WordPress Emails looks. It\'s fully compatible with WooCommerce and Easy Digital Downloads html emails', 'email-templates' ),
 		) );
 
 		do_action('mailtpl/sections/before', $wp_customize );
 		// Add sections
 		$wp_customize->add_section( 'section_mailtpl_settings', array(
-			'title' => __( 'Settings', $this->plugin_name ),
+			'title' => __( 'Settings', 'email-templates' ),
 			'panel' => 'mailtpl',
 		) );
 		$wp_customize->add_section( 'section_mailtpl_template', array(
-			'title' => __( 'Template', $this->plugin_name ),
+			'title' => __( 'Template', 'email-templates' ),
 			'panel' => 'mailtpl',
 		) );
 		$wp_customize->add_section( 'section_mailtpl_header', array(
-			'title' => __( 'Email Header', $this->plugin_name ),
+			'title' => __( 'Email Header', 'email-templates' ),
 			'panel' => 'mailtpl',
 		) );
 		$wp_customize->add_section( 'section_mailtpl_body', array(
-			'title' => __( 'Email Body', $this->plugin_name ),
+			'title' => __( 'Email Body', 'email-templates' ),
 			'panel' => 'mailtpl',
 		) );
 		$wp_customize->add_section( 'section_mailtpl_footer', array(
-			'title' => __( 'Footer', $this->plugin_name ),
+			'title' => __( 'Footer', 'email-templates' ),
 			'panel' => 'mailtpl',
 		) );
 		$wp_customize->add_section( 'section_mailtpl_test', array(
-			'title' => __( 'Send test email', $this->plugin_name ),
+			'title' => __( 'Send test email', 'email-templates' ),
 			'panel' => 'mailtpl',
 		) );
 		// Populate sections
@@ -192,11 +192,11 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
 			'mailtpl_from_name', array(
-				'label'         => __( 'From name', $this->plugin_name ),
+				'label'         => __( 'From name', 'email-templates' ),
 				'type'          => 'text',
 				'section'       => 'section_mailtpl_settings',
 				'settings'      => 'mailtpl_opts[from_name]',
-				'description'   => __('Default: ', $this->plugin_name ) . get_bloginfo('name')
+				'description'   => __('Default: ', 'email-templates' ) . get_bloginfo('name')
 			)
 		) );
 
@@ -210,11 +210,11 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
 			'mailtpl_from_email', array(
-				'label'         => __( 'From Email', $this->plugin_name ),
+				'label'         => __( 'From Email', 'email-templates' ),
 				'type'          => 'text',
 				'section'       => 'section_mailtpl_settings',
 				'settings'      => 'mailtpl_opts[from_email]',
-				'description'   => __('Default: ', $this->plugin_name ) . get_bloginfo('admin_email')
+				'description'   => __('Default: ', 'email-templates' ) . get_bloginfo('admin_email')
 			)
 		) );
 
@@ -241,7 +241,7 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
 			'mailtpl_template', array(
-				'label'         => __( 'Choose one', $this->plugin_name ),
+				'label'         => __( 'Choose one', 'email-templates' ),
 				'type'          => 'select',
 				'section'       => 'section_mailtpl_template',
 				'settings'      => 'mailtpl_opts[template]',
@@ -263,10 +263,10 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Font_Size_Customize_Control( $wp_customize,
 			'mailtpl_body_size', array(
-				'label'         => __( 'Email body size', $this->plugin_name ),
+				'label'         => __( 'Email body size', 'email-templates' ),
 				'section'       => 'section_mailtpl_template',
 				'settings'      => 'mailtpl_opts[body_size]',
-				'description'   => __( 'Choose boxed size', $this->plugin_name )
+				'description'   => __( 'Choose boxed size', 'email-templates' )
 			)
 		) );
 		// body bg
@@ -280,10 +280,10 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
 			'mailtpl_body_bg', array(
-				'label'         => __( 'Background Color', $this->plugin_name ),
+				'label'         => __( 'Background Color', 'email-templates' ),
 				'section'       => 'section_mailtpl_template',
 				'settings'      => 'mailtpl_opts[body_bg]',
-				'description'   => __( 'Choose email background color', $this->plugin_name )
+				'description'   => __( 'Choose email background color', 'email-templates' )
 			)
 		) );
 		// custom css
@@ -297,11 +297,11 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
 			'mailtpl_custom_css', array(
-				'label'     => __( 'Custom css', $this->plugin_name ),
+				'label'     => __( 'Custom css', 'email-templates' ),
 				'type'      => 'textarea',
 				'section'   => 'section_mailtpl_template',
 				'settings'  => 'mailtpl_opts[custom_css]',
-				'description'   => __('Add custom css. Be aware that this may not work on all email clients.', $this->plugin_name )
+				'description'   => __('Add custom css. Be aware that this may not work on all email clients.', 'email-templates' )
 			)
 		) );
 		do_action('mailtpl/sections/template/after_content', $wp_customize);
@@ -327,11 +327,11 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize,
 			'mailtpl_header', array(
-				'label'         => __( 'Logo', $this->plugin_name ),
+				'label'         => __( 'Logo', 'email-templates' ),
 				'type'          => 'image',
 				'section'       => 'section_mailtpl_header',
 				'settings'      => 'mailtpl_opts[header_logo]',
-				'description'   => __( 'Add an image to use in header. Leave empty to use text instead', $this->plugin_name )
+				'description'   => __( 'Add an image to use in header. Leave empty to use text instead', 'email-templates' )
 			)
 		) );
 
@@ -346,11 +346,11 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
 			'mailtpl_header_logo_text', array(
-				'label'         => __( 'Logo', $this->plugin_name ),
+				'label'         => __( 'Logo', 'email-templates' ),
 				'type'          => 'textarea',
 				'section'       => 'section_mailtpl_header',
 				'settings'      => 'mailtpl_opts[header_logo_text]',
-				'description'   => __( 'Add text to your mail header. Used for alt text when Image it\'s used', $this->plugin_name )
+				'description'   => __( 'Add text to your mail header. Used for alt text when Image it\'s used', 'email-templates' )
 			)
 		) );
 		// header alignment
@@ -364,7 +364,7 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
 			'mailtpl_aligment', array(
-				'label'         => __( 'Aligment', $this->plugin_name ),
+				'label'         => __( 'Aligment', 'email-templates' ),
 				'type'          => 'select',
 				'default'       => 'center',
 				'choices'       => array(
@@ -374,7 +374,7 @@ class Mailtpl_Customizer {
 				),
 				'section'       => 'section_mailtpl_header',
 				'settings'      => 'mailtpl_opts[header_aligment]',
-				'description'   => __( 'Choose alignment for header', $this->plugin_name )
+				'description'   => __( 'Choose alignment for header', 'email-templates' )
 			)
 		) );
 
@@ -389,10 +389,10 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
 			'mailtpl_header_bg', array(
-				'label'         => __( 'Background Color', $this->plugin_name ),
+				'label'         => __( 'Background Color', 'email-templates' ),
 				'section'       => 'section_mailtpl_header',
 				'settings'      => 'mailtpl_opts[header_bg]',
-				'description'   => __( 'Choose header background color', $this->plugin_name )
+				'description'   => __( 'Choose header background color', 'email-templates' )
 			)
 		) );
 		// text size
@@ -406,11 +406,11 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Font_Size_Customize_Control( $wp_customize,
 			'mailtpl_header_text_size', array(
-				'label'         => __( 'Text size', $this->plugin_name ),
+				'label'         => __( 'Text size', 'email-templates' ),
 				'type'          => 'mailtpl_send_mail',
 				'section'       => 'section_mailtpl_header',
 				'settings'      => 'mailtpl_opts[header_text_size]',
-				'description'   => __( 'Slide to change text size', $this->plugin_name )
+				'description'   => __( 'Slide to change text size', 'email-templates' )
 			)
 		) );
 
@@ -425,10 +425,10 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
 			'mailtpl_header_text_color', array(
-				'label'         => __( 'Text Color', $this->plugin_name ),
+				'label'         => __( 'Text Color', 'email-templates' ),
 				'section'       => 'section_mailtpl_header',
 				'settings'      => 'mailtpl_opts[header_text_color]',
-				'description'   => __( 'Choose header text color', $this->plugin_name )
+				'description'   => __( 'Choose header text color', 'email-templates' )
 			)
 		) );
 		do_action('mailtpl/sections/header/after_content', $wp_customize);
@@ -453,10 +453,10 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
 			'mailtpl_email_body_bg', array(
-				'label'         => __( 'Background Color', $this->plugin_name ),
+				'label'         => __( 'Background Color', 'email-templates' ),
 				'section'       => 'section_mailtpl_body',
 				'settings'      => 'mailtpl_opts[email_body_bg]',
-				'description'   => __( 'Choose email body background color', $this->plugin_name )
+				'description'   => __( 'Choose email body background color', 'email-templates' )
 			)
 		) );
 		// text size
@@ -470,11 +470,11 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Font_Size_Customize_Control( $wp_customize,
 			'mailtpl_body_text_size', array(
-				'label'         => __( 'Text size', $this->plugin_name ),
+				'label'         => __( 'Text size', 'email-templates' ),
 				'type'          => 'mailtpl_send_mail',
 				'section'       => 'section_mailtpl_body',
 				'settings'      => 'mailtpl_opts[body_text_size]',
-				'description'   => __( 'Slide to change text size', $this->plugin_name )
+				'description'   => __( 'Slide to change text size', 'email-templates' )
 			)
 		) );
 
@@ -489,10 +489,10 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
 			'mailtpl_body_text_color', array(
-				'label'         => __( 'Text Color', $this->plugin_name ),
+				'label'         => __( 'Text Color', 'email-templates' ),
 				'section'       => 'section_mailtpl_body',
 				'settings'      => 'mailtpl_opts[body_text_color]',
-				'description'   => __( 'Choose body text color', $this->plugin_name )
+				'description'   => __( 'Choose body text color', 'email-templates' )
 			)
 		) );
 		// Links color
@@ -506,10 +506,10 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
 			'mailtpl_body_href_color', array(
-				'label'         => __( 'Links Color', $this->plugin_name ),
+				'label'         => __( 'Links Color', 'email-templates' ),
 				'section'       => 'section_mailtpl_body',
 				'settings'      => 'mailtpl_opts[body_href_color]',
-				'description'   => __( 'Choose links color', $this->plugin_name )
+				'description'   => __( 'Choose links color', 'email-templates' )
 			)
 		) );
 		do_action('mailtpl/sections/body/after_content', $wp_customize);
@@ -535,11 +535,11 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
 			'mailtpl_footer', array(
-				'label'     => __( 'Footer text', $this->plugin_name ),
+				'label'     => __( 'Footer text', 'email-templates' ),
 				'type'      => 'textarea',
 				'section'   => 'section_mailtpl_footer',
 				'settings'  => 'mailtpl_opts[footer_text]',
-				'description'   => __('Change the email footer here', $this->plugin_name )
+				'description'   => __('Change the email footer here', 'email-templates' )
 			)
 		) );
 
@@ -554,7 +554,7 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
 			'mailtpl_footer_aligment', array(
-				'label'         => __( 'Aligment', $this->plugin_name ),
+				'label'         => __( 'Aligment', 'email-templates' ),
 				'type'          => 'select',
 				'default'       => 'center',
 				'choices'       => array(
@@ -564,7 +564,7 @@ class Mailtpl_Customizer {
 				),
 				'section'       => 'section_mailtpl_footer',
 				'settings'      => 'mailtpl_opts[footer_aligment]',
-				'description'   => __( 'Choose alignment for footer', $this->plugin_name )
+				'description'   => __( 'Choose alignment for footer', 'email-templates' )
 			)
 		) );
 
@@ -579,10 +579,10 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
 			'mailtpl_footer_bg', array(
-				'label'         => __( 'Background Color', $this->plugin_name ),
+				'label'         => __( 'Background Color', 'email-templates' ),
 				'section'       => 'section_mailtpl_footer',
 				'settings'      => 'mailtpl_opts[footer_bg]',
-				'description'   => __( 'Choose footer background color', $this->plugin_name )
+				'description'   => __( 'Choose footer background color', 'email-templates' )
 			)
 		) );
 		// text size
@@ -596,11 +596,11 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Font_Size_Customize_Control( $wp_customize,
 			'mailtpl_footer_text_size', array(
-				'label'         => __( 'Text size', $this->plugin_name ),
+				'label'         => __( 'Text size', 'email-templates' ),
 				'type'          => 'mailtpl_send_mail',
 				'section'       => 'section_mailtpl_footer',
 				'settings'      => 'mailtpl_opts[footer_text_size]',
-				'description'   => __( 'Slide to change text size', $this->plugin_name )
+				'description'   => __( 'Slide to change text size', 'email-templates' )
 			)
 		) );
 		// text color
@@ -614,10 +614,10 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
 			'mailtpl_footer_text_color', array(
-				'label'         => __( 'Text Color', $this->plugin_name ),
+				'label'         => __( 'Text Color', 'email-templates' ),
 				'section'       => 'section_mailtpl_footer',
 				'settings'      => 'mailtpl_opts[footer_text_color]',
-				'description'   => __( 'Choose footer text color', $this->plugin_name )
+				'description'   => __( 'Choose footer text color', 'email-templates' )
 			)
 		) );
 
@@ -632,7 +632,7 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
 			'mailtpl_footer_powered_by', array(
-				'label'         => __( 'Powered by', $this->plugin_name ),
+				'label'         => __( 'Powered by', 'email-templates' ),
 				'section'       => 'section_mailtpl_footer',
 				'settings'      => 'mailtpl_opts[footer_powered_by]',
 				'type'          => 'select',
@@ -640,7 +640,7 @@ class Mailtpl_Customizer {
 					'off'   => 'Off',
 					'on'    => 'On',
 				),
-				'description'   => __( 'Display a tiny link to the plugin page', $this->plugin_name )
+				'description'   => __( 'Display a tiny link to the plugin page', 'email-templates' )
 			)
 		) );
 		do_action('mailtpl/sections/footer/after_content', $wp_customize);
@@ -666,11 +666,11 @@ class Mailtpl_Customizer {
 		) );
 		$wp_customize->add_control( new WP_Send_Mail_Customize_Control( $wp_customize,
 			'mailtpl_test', array(
-				'label'         => __( 'Send test email', $this->plugin_name ),
+				'label'         => __( 'Send test email', 'email-templates' ),
 				'type'          => 'mailtpl_send_mail',
 				'section'       => 'section_mailtpl_test',
 				'settings'      => 'mailtpl_opts[send_mail]',
-				'description'   => __( 'Save the template and then click the button to send a test email to admin email ', $this->plugin_name ) . get_bloginfo('admin_email')
+				'description'   => __( 'Save the template and then click the button to send a test email to admin email ', 'email-templates' ) . get_bloginfo('admin_email')
 			)
 		) );
 		do_action('mailtpl/sections/test/after_content', $wp_customize);

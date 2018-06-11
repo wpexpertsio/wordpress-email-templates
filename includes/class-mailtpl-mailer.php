@@ -69,8 +69,9 @@ class Mailtpl_Mailer {
 	function send_email( &$phpmailer ) {
 		do_action( 'mailtpl/send_email', $phpmailer, $this );
 		$message            =  $this->add_template( apply_filters( 'mailtpl/email_content', $phpmailer->Body ) );
-		$phpmailer->AltBody =  $this->replace_placeholders( strip_tags($phpmailer->Body) );
-		$phpmailer->Body    =  $this->replace_placeholders( $message, $phpmailer );
+		$user_email = $phpmailer->getToAddresses();
+		$phpmailer->AltBody =  $this->replace_placeholders( strip_tags($phpmailer->Body), $user_email );
+		$phpmailer->Body    =  $this->replace_placeholders( $message, $user_email );
 
 	}
 
@@ -83,12 +84,13 @@ class Mailtpl_Mailer {
 	public function send_email_generic( $message ) {
 		do_action( 'mailtpl/send_email_generic', $message, $this );
 		$temp_message       =  $this->add_template( apply_filters( 'mailtpl/email_content', $message['html'] ) );
-		$message['html']    =  $this->replace_placeholders( $temp_message, $message );
+		$user_email = isset( $message['to'] ) ? $message['to'] : $message;
+		$message['html']    =  $this->replace_placeholders( $temp_message, $user_email );
 		return $message;
 	}
 
 	/**
-	 * Generic Compatibility functions used for Mandrill,Mailgun, etc
+	 * Sengrid compatibility
 	 * @param $message Array
 	 *
 	 * @return Array
@@ -96,8 +98,8 @@ class Mailtpl_Mailer {
 	public function send_email_sendgrid( $message ) {
 		do_action( 'mailtpl/send_email_sendgrid', $message, $this );
 		$temp_message       =  $this->add_template( apply_filters( 'mailtpl/email_content', $message ) );
-		$message    =  $this->replace_placeholders( $temp_message, $message );
-		error_log("debug-log:".print_r($message,1));
+		$message    =  $this->replace_placeholders( $temp_message, '' );
+
 		return $message;
 	}
 
@@ -114,7 +116,8 @@ class Mailtpl_Mailer {
 			return $args;
 		do_action( 'mailtpl/send_email_postman', $args, $this );
 		$temp_message       =  $this->add_template( apply_filters( 'mailtpl/email_content', $args['message'] ) );
-		$args['message']    =  $this->replace_placeholders( $temp_message, $args );
+		$user_email = isset( $args['to'] ) ? $args['to'] : $args;
+		$args['message']    =  $this->replace_placeholders( $temp_message, $user_email );
 		return $args;
 	}
 
@@ -127,7 +130,7 @@ class Mailtpl_Mailer {
 		include_once( MAILTPL_PLUGIN_DIR . '/admin/templates/partials/default-message.php');
 		$message = ob_get_contents();
 		ob_end_clean();
-		$subject = __( 'Wp Email Templates', $this->plugin_name);
+		$subject = __( 'Wp Email Templates', 'email-templates');
 
 		echo wp_mail( get_bloginfo('admin_email'), $subject, $message);
 
@@ -159,12 +162,12 @@ class Mailtpl_Mailer {
 	 *
 	 * @param $email string Mail to be send
 	 *
-	 * @param $message array Could be plugin email arguments array or phpmailer instance.
+	 * @param $user_email string Get destination email
 	 * Passed to the filters in case users needs something
 	 *
 	 * @return string
 	 */
-	private function replace_placeholders( $email, $message = array() ) {
+	private function replace_placeholders( $email, $user_email = '' ) {
 
 		$to_replace = apply_filters( 'emailtpl/placeholders', array(
 			'%%BLOG_URL%%'         => get_option( 'siteurl' ),
@@ -173,10 +176,16 @@ class Mailtpl_Mailer {
 			'%%BLOG_DESCRIPTION%%' => get_option( 'blogdescription' ),
 			'%%ADMIN_EMAIL%%'      => get_option( 'admin_email' ),
 			'%%DATE%%'             => date_i18n( get_option( 'date_format' ) ),
-			'%%TIME%%'             => date_i18n( get_option( 'time_format' ) )
-		), $message);
+			'%%TIME%%'             => date_i18n( get_option( 'time_format' ) ),
+			'%%USER_EMAIL%%'       => $user_email
+		), $user_email);
 
 		foreach ( $to_replace as $placeholder => $var ) {
+			if( is_array($var) ){
+				do{
+					$var = reset($var);
+				} while( is_array($var) );
+			}
 			$email = str_replace( $placeholder , $var, $email );
 		}
 
