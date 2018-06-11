@@ -25,7 +25,7 @@ $template_container = "
 	border-radius:$border_radius !important;
 	background-color: #fafafa;
 	border-radius:6px !important;
-	max-width: ". ($settings['template'] == 'boxed' ? $settings['body_size'] : '100%') .";";
+	max-width: ". ($settings['template'] == 'boxed' ? $settings['body_size'].'px' : '100%') .";";
 $template_header = "
 	background-color: ".$settings['header_bg'].";
 	color: #f1f1f1;
