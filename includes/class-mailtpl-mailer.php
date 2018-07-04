@@ -61,63 +61,14 @@ class Mailtpl_Mailer {
 	}
 
 	/**
-	 * Modify php mailer body with final email
-	 *
+	 * Send Email to All the SMTP Plugins
 	 * @since 1.0.0
-	 * @param object $phpmailer
 	 */
-	function send_email( &$phpmailer ) {
-		do_action( 'mailtpl/send_email', $phpmailer, $this );
-		$message            =  $this->add_template( apply_filters( 'mailtpl/email_content', $phpmailer->Body ) );
-		$user_email = $phpmailer->getToAddresses();
-		$phpmailer->AltBody =  $this->replace_placeholders( strip_tags($phpmailer->Body), $user_email );
-		$phpmailer->Body    =  $this->replace_placeholders( $message, $user_email );
-
-	}
-
-	/**
-	 * Generic Compatibility functions used for Mandrill,Mailgun, etc
-	 * @param $message Array
-	 *
-	 * @return Array
-	 */
-	public function send_email_generic( $message ) {
-		do_action( 'mailtpl/send_email_generic', $message, $this );
-		$temp_message       =  $this->add_template( apply_filters( 'mailtpl/email_content', $message['html'] ) );
-		$user_email = isset( $message['to'] ) ? $message['to'] : $message;
-		$message['html']    =  $this->replace_placeholders( $temp_message, $user_email );
-		return $message;
-	}
-
-	/**
-	 * Sengrid compatibility
-	 * @param $message Array
-	 *
-	 * @return Array
-	 */
-	public function send_email_sendgrid( $message ) {
-		do_action( 'mailtpl/send_email_sendgrid', $message, $this );
-		$temp_message       =  $this->add_template( apply_filters( 'mailtpl/email_content', $message ) );
-		$message    =  $this->replace_placeholders( $temp_message, '' );
-
-		return $message;
-	}
-
-	/**
-	 * Postman Compatibility
-	 *
-	 * @param $args
-	 *
-	 * @return Array
-	 *
-	 */
-	public function send_email_postman( $args ) {
-		if( !class_exists('Postman') )
-			return $args;
-		do_action( 'mailtpl/send_email_postman', $args, $this );
-		$temp_message       =  $this->add_template( apply_filters( 'mailtpl/email_content', $args['message'] ) );
-		$user_email = isset( $args['to'] ) ? $args['to'] : $args;
-		$args['message']    =  $this->replace_placeholders( $temp_message, $user_email );
+	public function send_email($args) {
+		do_action( 'mailtpl/send_email', $args, $this );
+		$temp_message = $this->add_template( apply_filters( 'mailtpl/email_content', $args['message'] ) );
+		$user_email = isset( $args['to'] ) ? $args['to'] : get_option( 'admin_email' );
+		$args['message'] = $this->replace_placeholders( $temp_message, $user_email );
 		return $args;
 	}
 
@@ -154,7 +105,7 @@ class Mailtpl_Mailer {
 		include_once( $template_file );
 		$this->template = ob_get_contents();
 		ob_end_clean();
-		return str_replace( '%%MAILCONTENT%%', $email, $this->template );
+		return apply_filters('mailtpl/return_template',str_replace( '%%MAILCONTENT%%', $email, $this->template ));
 	}
 
 	/**

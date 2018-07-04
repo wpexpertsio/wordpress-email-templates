@@ -190,12 +190,7 @@ class Mailtpl {
 			$this->loader->add_action( 'template_include', $this->customizer, 'capture_customizer_page' );
 		}
 
-		$this->loader->add_action( 'phpmailer_init', $this->mailer, 'send_email', 50 );
-		$this->loader->add_filter( 'mandrill_payload', $this->mailer, 'send_email_generic' );
-		$this->loader->add_filter( 'mg_mutate_message_body', $this->mailer, 'send_email_generic' );
-		$this->loader->add_filter( 'sendgrid_mail_html', $this->mailer, 'send_email_sendgrid' );
-		$this->loader->add_filter( 'wp_mail', $this->mailer, 'send_email_postman' );
-
+		$this->loader->add_filter( 'wp_mail', $this->mailer, 'send_email' );
 		$this->loader->add_action( 'wp_ajax_mailtpl_send_email', $this->mailer, 'send_test_email' );
 		$this->loader->add_action( 'wp_mail_content_type', $this->mailer, 'set_content_type', 100 );
 		$this->loader->add_action( 'wp_mail_from_name', $this->mailer, 'set_from_name' );
