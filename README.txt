@@ -1,7 +1,7 @@
 === Email Templates ===
 Contributors: timersys
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K4T6L69EV9G2Q
-Tags: email templates, email template, html email, email template, template, better emails, wp better emails, wp email templates, html emails, wpmandrill, postman, wp smtp, woocommerce, easy digital downloads
+Tags: email templates, email template, html email, email template, template, better emails, wp better emails, wp email templates, html emails, postman, wp smtp, woocommerce, easy digital downloads
 Requires at least: 4.0
 Tested up to: 4.9.6
 Stable tag: 1.2.2.3
@@ -15,7 +15,7 @@ Send beautiful emails with the WordPress Email Templates plugin. Choose your tem
 
 Email Template plugin uses Customizer to make it easier. Preview your changes or send a test email with just a few clicks. **Requires WordPress 4.0.0**
 
-Compatible with : [wpMandrill](https://wordpress.org/plugins/wpmandrill/), [Post SMTP](https://wordpress.org/plugins/post-smtp/), [WP SMTP](https://wordpress.org/plugins/wp-smtp/), [Easy WP SMTP](https://wordpress.org/plugins/easy-wp-smtp/), [Easy SMTP Mail](https://wordpress.org/plugins/webriti-smtp-mail/), [Mailgun](https://wordpress.org/plugins/mailgun/), [Sengrid](https://wordpress.org/plugins/sendgrid-email-delivery-simplified/)
+Compatible with : [Post SMTP](https://wordpress.org/plugins/post-smtp/), [WP SMTP](https://wordpress.org/plugins/wp-smtp/), [Easy WP SMTP](https://wordpress.org/plugins/easy-wp-smtp/), [Easy SMTP Mail](https://wordpress.org/plugins/webriti-smtp-mail/), [Mailgun](https://wordpress.org/plugins/mailgun/), [Sengrid](https://wordpress.org/plugins/sendgrid-email-delivery-simplified/)
 
 = Help with translations =
 
