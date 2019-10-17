@@ -66,7 +66,7 @@ class Mailtpl_Mailer {
 	 */
 	public function send_email($args) {
 		do_action( 'mailtpl/send_email', $args, $this );
-		$temp_message = $this->add_template( apply_filters( 'mailtpl/email_content', $args['message'] ) );
+		$temp_message = $this->add_template( apply_filters( 'mailtpl/email_content', wp_kses_post( $args['message'] ) ) );
 		$user_email = isset( $args['to'] ) ? $args['to'] : get_option( 'admin_email' );
 		$args['message'] = $this->replace_placeholders( $temp_message, $user_email );
 		return $args;
