@@ -3,8 +3,8 @@ Contributors: timersys
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K4T6L69EV9G2Q
 Tags: email templates, email template, html email, email template, template, better emails, wp better emails, wp email templates, html emails, postman, wp smtp, woocommerce, easy digital downloads
 Requires at least: 4.0
-Tested up to: 5.1
-Stable tag: 1.3
+Tested up to: 5.3
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,10 @@ Copy the templates folder into your theme , then in functions.php add the follow
 3. Another example
 
 == Changelog ==
+
+= 1.3.1 =
+* Security fix to prevent html injection
+* Filter attributes for images
 
 = 1.3 =
 * Instead of multiple filters we now just modify wp_mail to make plugin more compatible
