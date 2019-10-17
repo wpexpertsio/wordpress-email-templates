@@ -93,7 +93,14 @@ $header_content_h1_a = "
                                             	<h1 style="<?php echo $header_content_h1; ?>" id="logo">
 		                                            <a style="<?php echo $header_content_h1_a;?>" href="<?php echo apply_filters( 'mailtpl/templates/header_logo_url', home_url());?>" title="<?php echo apply_filters( 'mailtpl/templates/header_logo_url_title', !empty($settings['header_logo_text']) ? do_shortcode( strip_tags($settings['header_logo_text']) ) : get_bloginfo('name') );?>"><?php
 		                                            if( !empty($settings['header_logo']) ) {
-			                                            echo '<img style="max-width:100%;" src="'.apply_filters( 'mailtpl/templates/header_logo', $settings['header_logo'] ).'" alt="'. apply_filters( 'mailtpl/templates/header_logo_alt', !empty($settings['header_logo_text']) ? do_shortcode( strip_tags($settings['header_logo_text']) ) : get_bloginfo( 'description' ) ) .'"/>';
+
+		                                            	$attrs = apply_filters( 'mailtpl/templates/header_logo_attr', array('style' => 'max-width:100%;'));
+
+		                                            	$header_logo_attr = [];
+		                                            	foreach($attrs as $attr_key => $attr_value)
+		                                            		$header_logo_attr[] = sanitize_key($attr_key).'='.sanitize_text_field($attr_value);
+
+			                                            echo '<img '.implode(' ', $header_logo_attr).' src="'.apply_filters( 'mailtpl/templates/header_logo', $settings['header_logo'] ).'" alt="'. apply_filters( 'mailtpl/templates/header_logo_alt', !empty($settings['header_logo_text']) ? do_shortcode( strip_tags($settings['header_logo_text']) ) : get_bloginfo( 'description' ) ) .'"/>';
 		                                            } elseif ( !empty( $settings['header_logo_text'] ) ) {
 														echo do_shortcode($settings['header_logo_text']);
 		                                            } else {
