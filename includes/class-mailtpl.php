@@ -190,17 +190,13 @@ class Mailtpl {
 			$this->loader->add_action( 'template_include', $this->customizer, 'capture_customizer_page', 999 );
 		}
 
-		$this->loader->add_filter( 'wp_mail', $this->mailer, 'send_email' );
+		$this->loader->add_filter( 'wp_mail', $this->mailer, 'send_email', 100 );
 		$this->loader->add_action( 'wp_ajax_mailtpl_send_email', $this->mailer, 'send_test_email' );
 		$this->loader->add_action( 'wp_mail_content_type', $this->mailer, 'set_content_type', 100 );
 		$this->loader->add_action( 'wp_mail_from_name', $this->mailer, 'set_from_name' );
 		$this->loader->add_action( 'wp_mail_from', $this->mailer, 'set_from_email');
 
 		$this->loader->add_filter( 'mailtpl/email_content', $this->mailer, 'clean_retrieve_password' );
-
-		$this->loader->add_filter( 'mailtpl/email_content', '', 'wptexturize' );
-		$this->loader->add_filter( 'mailtpl/email_content', '', 'convert_chars' );
-		$this->loader->add_filter( 'mailtpl/email_content', '', 'wpautop' );
 
 		$this->loader->add_filter('gform_html_message_template_pre_send_email',$this->mailer, 'gform_template');
 

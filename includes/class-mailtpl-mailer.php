@@ -36,6 +36,7 @@ class Mailtpl_Mailer {
 	 */
 	private $template = false;
 
+
 	/**
 	 * Initialize the class and set its properties.
 	 *
@@ -53,10 +54,20 @@ class Mailtpl_Mailer {
 
 	/**
 	 * Send html emails instead of text plain
-	 * @since 1.0.0
+	 *
+	 * @param $type
+	 *
 	 * @return string
+	 * @since 1.0.0
 	 */
-	public function set_content_type() {
+	public function set_content_type($type) {
+		if( $type != 'text/html' ) {
+			// If not html, work with content and filter it
+			add_filter( 'mailtpl/email_content', 'wptexturize' );
+			add_filter( 'mailtpl/email_content', 'convert_chars' );
+			add_filter( 'mailtpl/email_content', 'wpautop' );
+			add_filter( 'mailtpl/email_content', 'wp_kses_post', 50 );
+		}
 		return $content_type = 'text/html';
 	}
 
@@ -65,10 +76,12 @@ class Mailtpl_Mailer {
 	 * @since 1.0.0
 	 */
 	public function send_email($args) {
+
 		do_action( 'mailtpl/send_email', $args, $this );
-		$temp_message = $this->add_template( apply_filters( 'mailtpl/email_content', wp_kses_post( $args['message'] ) ) );
+		$temp_message = $this->add_template( apply_filters( 'mailtpl/email_content', $args['message'] ) );
 		$user_email = isset( $args['to'] ) ? $args['to'] : get_option( 'admin_email' );
 		$args['message'] = $this->replace_placeholders( $temp_message, $user_email );
+
 		return $args;
 	}
 
