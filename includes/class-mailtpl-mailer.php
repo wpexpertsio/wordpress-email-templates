@@ -63,10 +63,8 @@ class Mailtpl_Mailer {
 	public function set_content_type($type) {
 		if( $type != 'text/html' ) {
 			// If not html, work with content and filter it
-			add_filter( 'mailtpl/email_content', 'wptexturize' );
-			add_filter( 'mailtpl/email_content', 'convert_chars' );
-			add_filter( 'mailtpl/email_content', 'wpautop' );
 			add_filter( 'mailtpl/email_content', 'wp_kses_post', 50 );
+			$this->add_content_filters();
 		}
 		return $content_type = 'text/html';
 	}
@@ -83,6 +81,15 @@ class Mailtpl_Mailer {
 		$args['message'] = $this->replace_placeholders( $temp_message, $user_email );
 
 		return $args;
+	}
+
+	/**
+	 * Add content filters
+	 */
+	private function add_content_filters() {
+		add_filter( 'mailtpl/email_content', 'wptexturize' );
+		add_filter( 'mailtpl/email_content', 'convert_chars' );
+		add_filter( 'mailtpl/email_content', 'wpautop' );
 	}
 
 	/**
