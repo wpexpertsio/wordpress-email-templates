@@ -98,7 +98,7 @@ class Mailtpl_Mailer {
 	 */
 	public function send_test_email () {
 		ob_start();
-		include_once( MAILTPL_PLUGIN_DIR . '/admin/templates/partials/default-message.php');
+		include_once( apply_filters( 'mailtpl/customizer_template_message', MAILTPL_PLUGIN_DIR . '/admin/templates/partials/default-message.php' ) );
 		$message = ob_get_contents();
 		ob_end_clean();
 		$subject = __( 'Wp Email Templates', 'email-templates');
