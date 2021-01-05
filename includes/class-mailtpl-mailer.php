@@ -30,12 +30,6 @@ class Mailtpl_Mailer {
 	 */
 	private $version;
 
-	/**
-	 *
-	 * @var string  $template Cached version of the template
-	 */
-	private $template = false;
-
 
 	/**
 	 * Initialize the class and set its properties.
@@ -115,17 +109,14 @@ class Mailtpl_Mailer {
 	 * @return string
 	 */
 	private function add_template( $email ) {
-		if( $this->template )
-			return str_replace( '%%MAILCONTENT%%', $email, $this->template );
-
 		do_action( 'mailtpl/add_template', $email, $this );
 
 		$template_file = apply_filters( 'mailtpl/customizer_template', MAILTPL_PLUGIN_DIR . "/admin/templates/default.php");
 		ob_start();
-		include_once( $template_file );
-		$this->template = ob_get_contents();
+		include( $template_file );
+		$template = ob_get_contents();
 		ob_end_clean();
-		return apply_filters('mailtpl/return_template',str_replace( '%%MAILCONTENT%%', $email, $this->template ));
+		return apply_filters('mailtpl/return_template',str_replace( '%%MAILCONTENT%%', $email, $template ));
 	}
 
 	/**
