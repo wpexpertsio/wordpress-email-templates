@@ -161,10 +161,11 @@ class Mailtpl_Mailer {
 	 * @since 1.0.0
 	 * @return string
 	 */
-	public function set_from_email( $email ){
-		if( empty( $this->opts['from_email'] ) )
-			return $email;
-		return $this->opts['from_email'];
+	public function set_from_email( $email ) {
+		if ( empty( $email ) ) {
+			return $this->opts['from_email'];
+		}
+		return $email;
 	}
 
 	/**
@@ -172,10 +173,11 @@ class Mailtpl_Mailer {
 	 * @since 1.0.0
 	 * @return string
 	 */
-	public function set_from_name( $name ){
-		if( empty( $this->opts['from_name'] ) )
-			return $name;
-		return $this->opts['from_name'];
+	public function set_from_name( $name ) {
+		if ( empty( $name ) ) {
+			return $this->opts['from_name'];
+		}
+		return $name;
 	}
 
 	/**
