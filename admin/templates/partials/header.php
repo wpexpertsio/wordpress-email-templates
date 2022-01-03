@@ -56,7 +56,7 @@ $header_content_h1 = "
 	padding: 28px 24px;
 	display:block;
 	font-family:Arial;
-	font-size: ".$settings['header_text_size']."px;
+	font-size: ". (empty($settings['header_logo']) ? $settings['header_text_size'].'px' : "0px") .";";
 	font-weight:bold;
 	text-align:".$settings['header_aligment'].";
 	line-height: 150%;
