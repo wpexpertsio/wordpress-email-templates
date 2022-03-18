@@ -3,7 +3,7 @@
 /**
  * Email Templates
  *
- * @link              https://wp.timersys.com
+ * @link              https://www.wpexperts.io/
  * @since             1.0.0
  * @package           Mailtpl
  *
@@ -12,8 +12,8 @@
  * Plugin URI:        http://wordpress.org/plugins/email-templates
  * Description:       Beautify WordPress default emails
  * Version:           1.3.2.1
- * Author:            Damian Logghe
- * Author URI:        https://wp.timersys.com
+ * Author:            wpexpertsio
+ * Author URI:        https://www.wpexperts.io/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       email-templates

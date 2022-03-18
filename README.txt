@@ -1,9 +1,8 @@
 === Email Templates ===
-Contributors: timersys
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K4T6L69EV9G2Q
+Contributors: wpexpertsio
 Tags: email templates, email template, html email, email template, template, better emails, wp better emails, wp email templates, html emails, postman, wp smtp, woocommerce, easy digital downloads
 Requires at least: 4.0
-Tested up to: 5.6
+Tested up to: 5.9
 Stable tag: 1.3.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +14,7 @@ Send beautiful emails with the WordPress Email Templates plugin. Choose your tem
 
 Email Template plugin uses Customizer to make it easier. Preview your changes or send a test email with just a few clicks. **Requires WordPress 4.0.0**
 
-Compatible with : [Post SMTP](https://wordpress.org/plugins/post-smtp/), [WP SMTP](https://wordpress.org/plugins/wp-smtp/), [Easy WP SMTP](https://wordpress.org/plugins/easy-wp-smtp/), [Easy SMTP Mail](https://wordpress.org/plugins/webriti-smtp-mail/), [Mailgun](https://wordpress.org/plugins/mailgun/), [Sengrid](https://wordpress.org/plugins/sendgrid-email-delivery-simplified/)
+Compatible with : [Post SMTP](https://wordpress.org/plugins/post-smtp/)
 
 = Help with translations =
 
@@ -32,11 +31,7 @@ Send your translations to [Transifex](https://www.transifex.com/projects/p/wp-em
 *   Russian
 *   German
 
-= Collaborate in Github = - [https://github.com/timersys/wordpress-email-templates](https://github.com/timersys/wordpress-email-templates)
-
-
-
-Thanks to @eliorivero for sharing some customizer tips for plugins :)
+= Collaborate in Github = - [https://github.com/wpexpertsio/wordpress-email-templates](https://github.com/wpexpertsio/wordpress-email-templates)
 
 == Installation ==
 
@@ -56,9 +51,9 @@ Copy the templates folder into your theme , then in functions.php add the follow
 
 == Screenshots ==
 
-1. Editing a template
-2. Email received
-3. Another example
+1. Email Templates - Settings
+2. Boxed layout
+3. Full-width layout
 
 == Changelog ==
 
