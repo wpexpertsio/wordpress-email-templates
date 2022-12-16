@@ -1,0 +1,43 @@
+<wpml-config>                               
+	<admin-texts>
+		<key name="mailtpl_woomail">
+			<key name="new_order_subtitle" />
+			<key name="cancelled_order_subtitle" />
+			<key name="customer_processing_order_subtitle" />
+			<key name="customer_completed_order_subtitle" />
+			<key name="customer_refunded_order_subtitle" />
+			<key name="customer_on_hold_order_subtitle" />
+			<key name="customer_invoice_subtitle" />
+			<key name="failed_order_subtitle" />
+			<key name="customer_new_account_subtitle" />
+			<key name="customer_note_subtitle" />
+			<key name="customer_reset_password_subtitle" />
+			<key name="customer_processing_renewal_order_subtitle" />
+			<key name="customer_completed_renewal_order_subtitle" />
+			<key name="customer_completed_switch_order_subtitle" />
+			<key name="customer_renewal_invoice_subtitle" />
+			<key name="cancelled_subscription_subtitle" />
+			<key name="woocommerce_waitlist_mailout_subtitle" />
+			<key name="new_order_body" />
+			<key name="cancelled_order_body" />
+			<key name="customer_processing_order_body" />
+			<key name="customer_completed_order_body" />
+			<key name="customer_refunded_order_body_full" />
+			<key name="customer_refunded_order_body_partial" />
+			<key name="customer_on_hold_order_body" />
+			<key name="customer_invoice_body" />
+			<key name="customer_invoice_body_paid" />
+			<key name="failed_order_body" />
+			<key name="customer_new_account_body" />
+			<key name="customer_note_body" />
+			<key name="customer_reset_password_body" />
+			<key name="customer_processing_renewal_order_body" />
+			<key name="customer_completed_renewal_order_body" />
+			<key name="customer_completed_switch_order_body" />
+			<key name="customer_renewal_invoice_body" />
+			<key name="customer_renewal_invoice_body_failed" />
+			<key name="cancelled_subscription_body" />
+			<key name="woocommerce_waitlist_mailout_body" />
+		</key>
+	</admin-texts>
+</wpml-config>

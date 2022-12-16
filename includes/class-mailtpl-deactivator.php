@@ -18,7 +18,7 @@
  * @since      1.0.0
  * @package    Mailtpl
  * @subpackage Mailtpl/includes
- * @author     Damian Logghe <info@timersys.com>
+ * @author     wpexperts
  */
 class Mailtpl_Deactivator {
 

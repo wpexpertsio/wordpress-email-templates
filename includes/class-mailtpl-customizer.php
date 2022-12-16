@@ -8,7 +8,7 @@
  *
  * @package    Mailtpl
  * @subpackage Mailtpl/includes
- * @author     Damian Logghe <info@timersys.com>
+ * @author     wpexperts
  */
 class Mailtpl_Customizer {
 
@@ -52,7 +52,7 @@ class Mailtpl_Customizer {
 	public function register_customize_sections( $wp_customize ){
 
 		$wp_customize->add_panel( 'mailtpl', array(
-			'title'         => __( 'Email Templates', 'email-templates' ),
+			'title'         => __( 'Wordpress Email Templates', 'email-templates' ),
 			'description'   => __( 'Within the Email Templates customizer you can change how your WordPress Emails looks. It\'s fully compatible with WooCommerce and Easy Digital Downloads html emails', 'email-templates' ),
 		) );
 
@@ -161,7 +161,7 @@ class Mailtpl_Customizer {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( 'mailtpl-js', MAILTPL_PLUGIN_URL . '/admin/js/mailtpl-admin.js', '', $this->version, false );
+		wp_enqueue_script( 'mailtpl-js', MAILTPL_WOOMAIL_URL . '/admin/js/mailtpl-admin.js', array( 'customize-controls', 'jquery' ), $this->version, false );
 
 	}
 
@@ -170,8 +170,8 @@ class Mailtpl_Customizer {
 	 * @since 1.0.0
 	 */
 	public function enqueue_template_scripts(){
-		wp_enqueue_script( 'mailtpl-front-js', MAILTPL_PLUGIN_URL . '/admin/js/mailtpl-public.js', array(  'jquery', 'customize-preview' ), $this->version, true );
-		wp_enqueue_style( 'mailtpl-css', MAILTPL_PLUGIN_URL . '/admin/css/mailtpl-admin.css', '', $this->version, false );
+		wp_enqueue_script( 'mailtpl-front-js', MAILTPL_WOOMAIL_URL . '/admin/js/mailtpl-public.js', array(  'jquery', 'customize-preview' ), $this->version, true );
+		wp_enqueue_style( 'mailtpl-css', MAILTPL_WOOMAIL_URL . '/admin/css/mailtpl-admin.css', '', $this->version, false );
 	}
 
 	/**

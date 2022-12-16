@@ -8,7 +8,7 @@
  *
  * @package    Mailtpl
  * @subpackage Mailtpl/includes
- * @author     Damian Logghe <info@timersys.com>
+ * @author     wpexperts
  */
 class Mailtpl_Mailer {
 
@@ -68,7 +68,7 @@ class Mailtpl_Mailer {
 	 * @since 1.0.0
 	 */
 	public function send_email($args) {
-
+		
 		do_action( 'mailtpl/send_email', $args, $this );
 		$temp_message = $this->add_template( apply_filters( 'mailtpl/email_content', $args['message'] ) );
 		$user_email = isset( $args['to'] ) ? $args['to'] : get_option( 'admin_email' );
@@ -132,6 +132,7 @@ class Mailtpl_Mailer {
 	private function replace_placeholders( $email, $user_email = '' ) {
 
 		$to_replace = apply_filters( 'emailtpl/placeholders', array(
+			'##SITEURL###'         => get_option( 'siteurl' ),
 			'%%BLOG_URL%%'         => get_option( 'siteurl' ),
 			'%%HOME_URL%%'         => get_option( 'home' ),
 			'%%BLOG_NAME%%'        => get_option( 'blogname' ),

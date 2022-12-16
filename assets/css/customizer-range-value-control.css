@@ -1,0 +1,110 @@
+/*
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    padding: 60px 20px;
+}
+
+@media (min-width: 600px) {
+    body {
+        padding: 60px;
+    }
+}
+*/
+/*.range-slider {
+    margin: 60px 0 0 0%;
+}*/
+
+.range-slider {
+    width: 100%;
+}
+/*
+.range-slider__range {
+    -webkit-appearance: none;
+    width: calc(100% - (95px));
+    height: 10px;
+    border-radius: 5px;
+    background: #d7dcdf;
+    outline: none;
+    padding: 0;
+    margin: 0;
+}
+
+ .range-slider__range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #bb77ae;
+    cursor: pointer;
+    -webkit-transition: background .15s ease-in-out;
+    transition: background .15s ease-in-out;
+}
+
+.range-slider__range::-webkit-slider-thumb:hover {
+    background: #bb77ae;
+}
+
+.range-slider__range:active::-webkit-slider-thumb {
+    background: #bb77ae;
+}
+
+.range-slider__range::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border: 0;
+    border-radius: 50%;
+    background: #bb77ae;
+    cursor: pointer;
+    -webkit-transition: background .15s ease-in-out;
+    transition: background .15s ease-in-out;
+}
+
+.range-slider__range::-moz-range-thumb:hover {
+    background: #bb77ae;
+}
+
+.range-slider__range:active::-moz-range-thumb {
+    background: #bb77ae;
+} */
+
+.range-slider__value {
+    display: inline-block;
+    position: relative;
+    width: 60px;
+    color: #fff;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 3px;
+    background: #0075ff;
+    padding: 5px 10px;
+    margin-left: 8px;
+}
+
+/*.range-slider__value:after {
+    position: absolute;
+    top: 8px;
+    left: -7px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-right: 7px solid #bb77ae;
+    border-bottom: 7px solid transparent;
+    content: '';
+}*/
+
+::-moz-range-track {
+    background: #d7dcdf;
+    border: 0;
+}
+
+input::-moz-focus-inner, input::-moz-focus-outer {
+    border: 0;
+}
+input[type=checkbox].tgl-light:checked + .tgl-btn {
+    background: #0075ff;
+}

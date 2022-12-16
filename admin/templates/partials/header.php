@@ -5,7 +5,7 @@
  * @version	1.0
  * @since 1.4
  * @package	Wordpress Social Invitations
- * @author Timersys
+ * @author wpexpert
  */
 if ( ! defined( 'ABSPATH' ) ) exit; 
 

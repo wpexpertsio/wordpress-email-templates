@@ -11,11 +11,11 @@
  * @since      1.0.0
  * @package    Mailtpl
  * @subpackage Mailtpl/includes
- * @author     Damian Logghe <info@timersys.com>
+ * @author     wpexperts
  */
 class Mailtpl {
 
-
+	
 	public $customizer;
 	public $admin;
 	public $mailer;
@@ -126,7 +126,7 @@ class Mailtpl {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.0 
 	 * @access   private
 	 */
 	private function load_dependencies() {
@@ -171,7 +171,7 @@ class Mailtpl {
 		$this->admin       = new Mailtpl_Admin( $this->get_plugin_name(), $this->get_version() );
 		$this->customizer  = new Mailtpl_Customizer( $this->get_plugin_name(), $this->get_version() );
 		$this->mailer      = new Mailtpl_Mailer( $this->get_plugin_name(), $this->get_version() );
-
+		
 		$this->loader->add_action( 'admin_menu', $this->admin, 'add_menu_link' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $this->admin, 'wp_pointers', 1000 );
 		$this->loader->add_action( 'mailtpl/admin_pointers-plugins', $this->admin, 'add_wp_pointer' );
@@ -189,6 +189,8 @@ class Mailtpl {
 			$this->loader->add_action( 'customize_panel_active', $this->customizer, 'remove_other_panels', 10, 2 );
 			$this->loader->add_action( 'template_include', $this->customizer, 'capture_customizer_page', 30000 );
 		}
+		
+		add_action( 'woocommerce_email_header', array( $this, 'add_email_header' ) ); 
 
 		$this->loader->add_filter( 'wp_mail', $this->mailer, 'send_email', 100 );
 		$this->loader->add_action( 'wp_ajax_mailtpl_send_email', $this->mailer, 'send_test_email' );
@@ -199,13 +201,18 @@ class Mailtpl {
 		$this->loader->add_filter( 'mailtpl/email_content', $this->mailer, 'clean_retrieve_password' );
 
 		$this->loader->add_filter('gform_html_message_template_pre_send_email',$this->mailer, 'gform_template');
-
+		
 		if( isset( $_GET['mailtpl_display'] ) ) {
 			$this->loader->add_action( 'customize_controls_enqueue_scripts', $this->customizer, 'enqueue_scripts' );
 			$this->loader->add_action( 'customize_preview_init', $this->customizer, 'enqueue_template_scripts', 99 );
 
 			$this->loader->add_action( 'init', $this->admin, 'remove_all_actions', 999 );
 		}
+	}
+
+	public function add_email_header( $ins ) {
+		remove_filter( 'wp_mail',  array( $this->mailer, 'send_email'), 100 );
+		remove_action( 'wp_ajax_mailtpl_send_email',  array( $this->mailer, 'send_test_email')  );
 	}
 
 
@@ -286,4 +293,4 @@ class Mailtpl {
 			'custom_css'        => '',
 		));
 	}
-}
+} 

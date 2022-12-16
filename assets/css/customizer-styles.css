@@ -1,0 +1,166 @@
+
+#customize-theme-controls .accordion-section-content {
+    background-color: #f9f9f9;
+}
+
+/* Color Control Tweaks */
+.wp-picker-container, .wp-picker-input-wrap {
+    width: 100%;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.wp-core-ui .wp-picker-container .wp-color-result.button {
+    height: 30px !important;
+    border-radius: 3px;
+    padding: 0 0 0 30px !important;
+    /* width:100%; */
+    color:#fff;
+    position:relative;
+}
+.wp-core-ui .button.wp-color-result .wp-color-result-text {
+    background-color: rgba(0,0,0,.2);
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    border: none;
+    box-shadow: none;
+    font-size: 12px;
+    border-radius: 3;
+    padding: 0 15px;
+}
+.wp-core-ui button.wp-color-result + .wp-picker-input-wrap > label {
+    width: 45%;
+}
+.wp-core-ui button.wp-color-result + .wp-picker-input-wrap input[type=text].wp-color-picker {
+    width: 100% !important;
+        vertical-align: bottom;
+    margin-top: 10px;
+        line-height: 20px;
+            border-color: #ccc;
+}
+.wp-customizer .wp-picker-active .wp-picker-input-wrap .wp-picker-default, .wp-customizer .wp-picker-active .wp-picker-input-wrap .wp-picker-clear {
+    display: inline-block !important;
+    margin-left: 10%;
+        width: 45%;
+            height: 28px;
+    margin-top: 10px;
+}
+.wp-customizer .wp-picker-container .iris-picker {
+    width: 95% !important;
+    margin-top: 15px;
+}
+.wp-customizer .wp-picker-container .iris-picker .iris-square {
+    width: 80% !important;
+}
+.wp-customizer .wp-picker-container .iris-picker .iris-strip {
+    width: 10% !important;
+}
+/* General Tweaks */
+.customize-control-select select {
+    min-width: 100%;
+    height: 30px;
+    border-radius: 3px;
+    border-color: #ccc;
+}
+.customize-control-title {
+    margin-top: 15px;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.customize-control input[type=number], .customize-control input[type=search], .customize-control input[type=tel], .customize-control input[type=url], .customize-control input[type=text], .customize-control input[type=password], .customize-control input[type=email] {
+	line-height: 22px;
+	border-color:#ccc;
+}
+.customize-control code {
+    padding: 10px;
+    display: block;
+}
+
+/* Mobile preview */
+.preview-mobile #customize-preview iframe {
+	width:600px;
+    height: 1500px;
+    -ms-transform: scale(0.50);
+    -moz-transform: scale(0.50);
+    -o-transform: scale(0.50);
+    -webkit-transform: scale(0.50);
+    transform: scale(0.50);
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+.preview-mobile .wp-full-overlay-main {
+    overflow-y:scroll;
+    overflow-x:auto;
+}
+
+/* Template Control */
+.customize-control-mailtpltemplateload .image-radio-select label {
+	display: block;
+    height: auto;
+    float: none;
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 8px 8px 0;
+    box-shadow: none;
+    box-sizing: border-box;
+}
+#customize-controls .customize-control-mailtpltemplateload label img {
+	border: 4px solid #ccc;
+    box-sizing: border-box;
+    cursor: pointer;
+    height: auto;
+    max-width: 100%;
+    padding: 1px;
+}
+#customize-controls .customize-control-mailtpltemplateload label.mailtplactive img {
+	border-color: #00a0d2;
+}
+.customize-control-mailtpltemplateload .mailtpl-template-woomail-load-controls:after {
+    clear: both;
+    display: table;
+    content: '';
+}
+/* Also Button for Importer */
+.mailtpl-woomail-button {
+	width: 100%;
+    padding: 6px 12px;
+    height: auto;
+}
+/* Import Export styles */
+.mailtpl-woomail-form {
+    position: absolute;
+    left: -99999px;
+}
+.mailtpl-woomail-hr {
+    margin: 20px 0px 10px;
+}
+.mailtpl-woomail-import-file {
+    background: #eeeeee;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 12px;
+}
+.mailtpl-woomail-uploading, .mailtpl-woomail-loading {
+    background: #eeeeee;
+    display: none;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.preview-mobile .wp-full-overlay-main {
+    margin: auto 0 auto -190px;
+    width: 380px;
+    height: 580px;
+    max-height: 100%;
+    max-width: 100%;
+    left: 50%;
+}
+/* Fix for Shopkeeper theme */
+#customize-control-mailtpl_woomail_email_load_template {
+    max-height: none;
+}

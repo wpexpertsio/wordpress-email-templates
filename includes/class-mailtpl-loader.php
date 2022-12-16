@@ -19,7 +19,7 @@
  *
  * @package    Mailtpl
  * @subpackage Mailtpl/includes
- * @author     Damian Logghe <info@timersys.com>
+ * @author     wpexperts
  */
 class Mailtpl_Loader {
 

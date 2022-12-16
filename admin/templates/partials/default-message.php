@@ -4,7 +4,9 @@
 
 <h3>Placeholders</h3>
 <p><?php _e( 'You can use any of these placeholders in your emails content or templates and they will be automatically replaced', 'email-templates');?></p>
-<ul>
+<ul style=" <?php if ( ! is_customize_preview() ) {
+    echo "color: {$settings['header_text_color']}";
+} ?>">
 	<li>%%BLOG_URL%%</li>
 	<li>%%HOME_URL%%</li>
 	<li>%%BLOG_NAME%%</li>

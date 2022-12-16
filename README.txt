@@ -1,9 +1,9 @@
-=== Email Templates ===
+=== Email Templates Customizer and Designer for WordPress and WooCommerce ===
 Contributors: wpexpertsio
-Tags: email templates, email template, html email, email template, template, better emails, wp better emails, wp email templates, html emails, postman, wp smtp, woocommerce, easy digital downloads
-Requires at least: 4.0
-Tested up to: 5.9
-Stable tag: 1.3.2.1
+Tags: Email templates, email designer, email customizer, email, woocommerce email
+Requires at least: 7.4
+Tested up to: 6.1.1
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,7 +37,8 @@ Send your translations to [Transifex](https://www.transifex.com/projects/p/wp-em
 
 1. Upload the plugin in /wp-admin/plugin-install.php
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Click on Appearance -> "Email Templates" to start editing
+3. Click on Email Templates -> "WordPress Email" to start editing
+4. Click on Email Templates -> "WooCommerce Email" to start editing
 
 == Frequently Asked Questions ==
 
@@ -54,8 +55,19 @@ Copy the templates folder into your theme , then in functions.php add the follow
 1. Email Templates - Settings
 2. Boxed layout
 3. Full-width layout
+4. Email Notification
+5. Email Type
+6. Background Color
+7. Bundle Icon
+8. Send Preview Email
+9. Email Type and Text
+10. Font Family
+11. WooCommerce Emails
 
 == Changelog ==
+
+= 1.4 =
+* NEW - WooCommerce Email Customizer Added
 
 = 1.3.2.1 =
 * Emails not being send when multiple emails where being sent at the same time
